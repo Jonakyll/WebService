@@ -7,7 +7,9 @@ import java.rmi.registry.LocateRegistry;
 import java.util.List;
 
 import fr.uge.webServices.project.Car;
+import fr.uge.webServices.project.Garage;
 import fr.uge.webServices.project.ICar;
+import fr.uge.webServices.project.IGarage;
 
 public class Server {
 
@@ -17,9 +19,20 @@ public class Server {
 		ICar car = new Car();
 		car.setId(1234L);
 		car.setRating(4.5F);
-		car.setState(true);
+		car.setAvailability(true);
 		car.setTenants(List.of(2222L, 3333L));
-		Naming.rebind("rmi://localhost:1099/car", car);
+
+		ICar anotherCar = new Car();
+		anotherCar.setId(5678L);
+		anotherCar.setRating(5.F);
+		anotherCar.setAvailability(true);
+		anotherCar.setTenants(List.of());
+		
+		IGarage garage = new Garage();
+		garage.addCar(car);
+		garage.addCar(anotherCar);
+
+		Naming.rebind("rmi://localhost:1099/garage", garage);
 		System.out.println("server launched!");
 	}
 
