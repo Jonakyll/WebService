@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://project.webServices.uge.fr" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://project.webServices.uge.fr" xmlns:intf="http://project.webServices.uge.fr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://project.webServices.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="display">
+    <complexType/>
+   </element>
+   <element name="displayResponse">
+    <complexType/>
+   </element>
+   <element name="addAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="currency" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAccountResponse">
+    <complexType/>
+   </element>
+   <element name="depositOf">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amount" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="depositOfResponse">
+    <complexType/>
+   </element>
+   <element name="payVehicle">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amountEUR" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payVehicleResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="payVehicleResponse">
+
+      <wsdl:part element="impl:payVehicleResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayResponse">
+
+      <wsdl:part element="impl:displayResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="depositOfRequest">
+
+      <wsdl:part element="impl:depositOf" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAccountResponse">
+
+      <wsdl:part element="impl:addAccountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addAccountRequest">
+
+      <wsdl:part element="impl:addAccount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="depositOfResponse">
+
+      <wsdl:part element="impl:depositOfResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="payVehicleRequest">
+
+      <wsdl:part element="impl:payVehicle" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayRequest">
+
+      <wsdl:part element="impl:display" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Bank">
+
+      <wsdl:operation name="display">
+
+         <wsdl:input message="impl:displayRequest" name="displayRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayResponse" name="displayResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addAccount">
+
+         <wsdl:input message="impl:addAccountRequest" name="addAccountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addAccountResponse" name="addAccountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payVehicle">
+
+         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BankSoapBinding" type="impl:Bank">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="display">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="depositOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="depositOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payVehicle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="payVehicleRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="payVehicleResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BankService">
+
+      <wsdl:port binding="impl:BankSoapBinding" name="Bank">
+
+         <wsdlsoap:address location="http://localhost:8080/BanqueService/services/Bank"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
