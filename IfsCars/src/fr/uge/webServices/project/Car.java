@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Car extends UnicastRemoteObject implements ICar {
 
 	private Long id;
-	private boolean located;
+	private boolean available;
 	private float rating;
 	private List<Long> tenants;
 
@@ -22,8 +22,8 @@ public class Car extends UnicastRemoteObject implements ICar {
 	}
 
 	@Override
-	public boolean getState() throws RemoteException {
-		return located;
+	public boolean getAvailability() throws RemoteException {
+		return available;
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class Car extends UnicastRemoteObject implements ICar {
 	}
 
 	@Override
-	public void setState(boolean located) throws RemoteException {
-		this.located = located;
+	public void setAvailability(boolean available) throws RemoteException {
+		this.available = available;
 	}
 
 	@Override

@@ -5,17 +5,19 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import fr.uge.webServices.project.ICar;
+import fr.uge.webServices.project.IGarage;
 
 public class Client {
 
 	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
-		ICar car = (ICar) Naming.lookup("rmi://localhost:1099/car");
+		IGarage garage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 
-		System.out.println(car.getRating());
-		System.out.println(car.getState());
-		System.out.println(car.getId());
-		System.out.println(car.getTenants());
+		for (var car : garage.getCars()) {
+			System.out.println("rating\t\t" + car.getRating());
+			System.out.println("availability\t" + car.getAvailability());
+			System.out.println("id\t\t" + car.getId());
+			System.out.println("tenants\t\t" + car.getTenants() + "\n");
+		}
 
 	}
 
