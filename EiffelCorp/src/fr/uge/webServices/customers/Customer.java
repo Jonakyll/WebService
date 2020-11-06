@@ -3,6 +3,8 @@ package fr.uge.webServices.customers;
 import java.util.List;
 import java.util.Objects;
 
+import fr.uge.webServices.common.ICar;
+
 public class Customer {
 	private Long id;
 	private List<ICar> cars;

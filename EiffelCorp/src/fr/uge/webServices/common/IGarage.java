@@ -1,4 +1,4 @@
-package fr.uge.webServices.project;
+package fr.uge.webServices.common;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -15,3 +15,4 @@ public interface IGarage extends Remote {
 	List<ICar> getCars() throws RemoteException;
 
 }
+

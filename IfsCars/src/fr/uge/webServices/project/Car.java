@@ -5,6 +5,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.Objects;
 
+import fr.uge.webServices.common.ICar;
+
 public class Car extends UnicastRemoteObject implements ICar {
 
 	private Long id;

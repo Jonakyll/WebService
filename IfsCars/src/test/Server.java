@@ -6,10 +6,10 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.List;
 
+import fr.uge.webServices.common.ICar;
+import fr.uge.webServices.common.IGarage;
 import fr.uge.webServices.project.Car;
 import fr.uge.webServices.project.Garage;
-import fr.uge.webServices.project.ICar;
-import fr.uge.webServices.project.IGarage;
 
 public class Server {
 

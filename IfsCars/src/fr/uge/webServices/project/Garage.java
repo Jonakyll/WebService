@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import fr.uge.webServices.common.ICar;
+import fr.uge.webServices.common.IGarage;
+
 public class Garage extends UnicastRemoteObject implements IGarage {
 
 	private Map<Long, ICar> cars = new HashMap<Long, ICar>();
