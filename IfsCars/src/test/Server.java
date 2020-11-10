@@ -17,20 +17,20 @@ public class Server {
 		LocateRegistry.createRegistry(1099);
 
 		ICar car = new Car();
-		car.setId(1234L);
-		car.setRating(4.5F);
+		car.setId(1111L);
+		car.setRating(4.F);
 		car.setAvailability(true);
-		car.setTenants(List.of(2222L, 3333L));
+		car.setTenants(List.of());
 
 		ICar anotherCar = new Car();
-		anotherCar.setId(5678L);
+		anotherCar.setId(4444L);
 		anotherCar.setRating(5.F);
 		anotherCar.setAvailability(true);
 		anotherCar.setTenants(List.of());
 		
 		IGarage garage = new Garage();
-		garage.addCar(car);
-		garage.addCar(anotherCar);
+		((Garage) garage).addCarToRent(car);
+		((Garage) garage).addCarToRent(anotherCar);
 
 		Naming.rebind("rmi://localhost:1099/garage", garage);
 		System.out.println("server launched!");

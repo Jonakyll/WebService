@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IGarage extends Remote {
 
-	void addCar(ICar car) throws RemoteException;
+	boolean addCar(Long customerId, ICar car) throws RemoteException;
 
-	void removeCar(ICar car) throws RemoteException;
+	void removeCar(Long customerId, ICar car) throws RemoteException;
 
 	ICar findCar(Long id) throws RemoteException;
 	
