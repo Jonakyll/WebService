@@ -2,7 +2,7 @@ package fr.uge.webServices.common;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.Queue;
 
 public interface ICar extends Remote {
 
@@ -12,7 +12,7 @@ public interface ICar extends Remote {
 
 	float getRating() throws RemoteException;
 
-	List<Long> getTenants() throws RemoteException;
+	Queue<Long> getTenants() throws RemoteException;
 
 	void setId(Long id) throws RemoteException;
 
@@ -20,6 +20,12 @@ public interface ICar extends Remote {
 
 	void setRating(float rating) throws RemoteException;
 
-	void setTenants(List<Long> tenants) throws RemoteException;
+	void addTenant(Long customerId) throws RemoteException;
+
+	void removeTenant() throws RemoteException;
+
+	Long getNextTenantId() throws RemoteException;
+	
+	void setNextTenantId(Long customerId) throws RemoteException;
 
 }

@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.util.List;
 
 import fr.uge.webServices.common.ICar;
 import fr.uge.webServices.common.IGarage;
@@ -18,15 +17,11 @@ public class Server {
 
 		ICar car = new Car();
 		car.setId(1111L);
-		car.setRating(4.F);
 		car.setAvailability(true);
-		car.setTenants(List.of());
 
 		ICar anotherCar = new Car();
 		anotherCar.setId(4444L);
-		anotherCar.setRating(5.F);
 		anotherCar.setAvailability(true);
-		anotherCar.setTenants(List.of());
 		
 		IGarage garage = new Garage();
 		((Garage) garage).addCarToRent(car);
