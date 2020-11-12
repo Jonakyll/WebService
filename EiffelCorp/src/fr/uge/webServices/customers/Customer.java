@@ -13,6 +13,7 @@ public class Customer {
 	private List<ICar> cars = new ArrayList<ICar>();
 	
 	public void rentCar(IGarage garage, ICar car) throws RemoteException {
+		Objects.requireNonNull(garage);
 		Objects.requireNonNull(car);
 		if (garage.addCar(id, car)) {
 			cars.add(car);
@@ -20,6 +21,7 @@ public class Customer {
 	}
 	
 	public void returnCar(IGarage garage, ICar car) throws RemoteException {
+		Objects.requireNonNull(garage);
 		Objects.requireNonNull(car);
 		garage.removeCar(id, car);
 	}
@@ -40,4 +42,9 @@ public class Customer {
 		this.cars = cars;
 	}
 	
+	public void rateCar(IGarage garage, ICar car, float rating) throws RemoteException {
+		Objects.requireNonNull(garage);
+		Objects.requireNonNull(car);
+		garage.rateCar(car, rating);
+	}
 }

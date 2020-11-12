@@ -2,8 +2,11 @@ package fr.uge.webServices.project;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import fr.uge.webServices.common.ICar;
 
@@ -11,8 +14,10 @@ public class Car extends UnicastRemoteObject implements ICar {
 
 	private Long id;
 	private boolean available;
-	private float rating;
-	private List<Long> tenants;
+	private List<Float> rating = new ArrayList<Float>();
+	private Queue<Long> tenants = new ArrayBlockingQueue<Long>(10);
+
+	private Long nextTenant;
 
 	public Car() throws RemoteException {
 
@@ -30,12 +35,12 @@ public class Car extends UnicastRemoteObject implements ICar {
 
 	@Override
 	public float getRating() throws RemoteException {
-		return rating;
+		return rating.isEmpty() ? 0F : rating.stream().reduce(0F, Float::sum) / rating.size();
 	}
 
 	@Override
-	public List<Long> getTenants() throws RemoteException {
-		return List.copyOf(tenants);
+	public Queue<Long> getTenants() throws RemoteException {
+		return new LinkedList<Long>(tenants);
 	}
 
 	@Override
@@ -50,13 +55,30 @@ public class Car extends UnicastRemoteObject implements ICar {
 
 	@Override
 	public void setRating(float rating) throws RemoteException {
-		this.rating = rating;
+		if (rating < 0 || rating > 5) {
+			throw new IllegalArgumentException();
+		}
+		this.rating.add(rating);
 	}
 
 	@Override
-	public void setTenants(List<Long> tenants) throws RemoteException {
-		Objects.requireNonNull(tenants);
-		this.tenants = List.copyOf(tenants);
+	public void addTenant(Long customerId) throws RemoteException {
+		this.tenants.offer(customerId);
+	}
+
+	@Override
+	public void removeTenant() throws RemoteException {
+		this.nextTenant = this.tenants.poll();
+	}
+
+	@Override
+	public Long getNextTenantId() throws RemoteException {
+		return nextTenant;
+	}
+
+	@Override
+	public void setNextTenantId(Long customerId) throws RemoteException {
+		this.nextTenant = customerId;
 	}
 
 }

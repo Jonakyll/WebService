@@ -2,7 +2,6 @@ package fr.uge.webServices.project;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,22 +19,26 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public boolean addCar(Long custommerId, ICar car) throws RemoteException {
+	public boolean addCar(Long customerId, ICar car) throws RemoteException {
 		Objects.requireNonNull(car);
 		ICar c = cars.get(car.getId());
-		if (c.getAvailability()) {
+
+		if (c != null) {
+			if (c.getAvailability() && (c.getTenants().isEmpty() || customerId.equals(c.getNextTenantId()))) {
 
 //			make the customer rent the car
-			c.setAvailability(false);
-			return true;
-		} else {
+				c.setAvailability(false);
+				c.setNextTenantId(null);
+				return true;
+			} else {
 
 //			put the customer into the waiting list
-			List<Long> tenants = new ArrayList<Long>(c.getTenants());
-			if (!tenants.contains(custommerId)) {
-				tenants.add(custommerId);
-				c.setTenants(tenants);
+				if (!c.getTenants().contains(customerId)) {
+					c.addTenant(customerId);
+				}
+				return false;
 			}
+		} else {
 			return false;
 		}
 	}
@@ -44,10 +47,17 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	public void removeCar(Long customerId, ICar car) throws RemoteException {
 		Objects.requireNonNull(car);
 		ICar c = cars.get(car.getId());
-		List<Long> tenants = new ArrayList<Long>(c.getTenants());
-		tenants.remove(customerId);
-		c.setTenants(tenants);
-		c.setAvailability(true);
+
+		if (c != null) {
+
+//		?
+			c.removeTenant();
+
+			// ask to the client to rate the car
+			// ask to the next client if he wants to rent?
+
+			c.setAvailability(true);
+		}
 	}
 
 	@Override
@@ -63,6 +73,16 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	public void addCarToRent(ICar car) throws RemoteException {
 		Objects.requireNonNull(car);
 		cars.put(car.getId(), car);
+	}
+
+	@Override
+	public void rateCar(ICar car, float rating) throws RemoteException {
+		Objects.requireNonNull(car);
+		ICar c = cars.get(car.getId());
+
+		if (c != null) {
+			c.setRating(rating);
+		}
 	}
 
 }
