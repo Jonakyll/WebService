@@ -4,7 +4,7 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://project.webServices.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="getPrice">
+   <element name="getAvailability">
     <complexType>
      <sequence>
       <element name="car" type="impl:Car"/>
@@ -18,26 +18,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      <element name="price" nillable="true" type="xsd:long"/>
     </sequence>
    </complexType>
-   <element name="getPriceResponse">
-    <complexType>
-     <sequence>
-      <element name="getPriceReturn" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="buy">
-    <complexType/>
-   </element>
-   <element name="buyResponse">
-    <complexType/>
-   </element>
-   <element name="getAvailability">
-    <complexType>
-     <sequence>
-      <element name="car" type="impl:Car"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="getAvailabilityResponse">
     <complexType>
      <sequence>
@@ -51,10 +31,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="addToCartResponse">
     <complexType/>
    </element>
-   <element name="showCars">
+   <element name="buy">
     <complexType/>
    </element>
-   <element name="showCarsResponse">
+   <element name="buyResponse">
     <complexType/>
    </element>
    <element name="addCar">
@@ -66,6 +46,26 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </element>
    <element name="addCarResponse">
     <complexType/>
+   </element>
+   <element name="showCars">
+    <complexType/>
+   </element>
+   <element name="showCarsResponse">
+    <complexType/>
+   </element>
+   <element name="getPrice">
+    <complexType>
+     <sequence>
+      <element name="car" type="impl:Car"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPriceResponse">
+    <complexType>
+     <sequence>
+      <element name="getPriceReturn" type="xsd:long"/>
+     </sequence>
+    </complexType>
    </element>
   </schema>
  </wsdl:types>
@@ -94,17 +94,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getPriceRequest">
+   <wsdl:message name="showCarsResponse">
 
-      <wsdl:part element="impl:getPrice" name="parameters">
+      <wsdl:part element="impl:showCarsResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="showCarsResponse">
+   <wsdl:message name="getPriceRequest">
 
-      <wsdl:part element="impl:showCarsResponse" name="parameters">
+      <wsdl:part element="impl:getPrice" name="parameters">
 
       </wsdl:part>
 
@@ -168,30 +168,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="Garage">
 
-      <wsdl:operation name="getPrice">
-
-         <wsdl:input message="impl:getPriceRequest" name="getPriceRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getPriceResponse" name="getPriceResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buy">
-
-         <wsdl:input message="impl:buyRequest" name="buyRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:buyResponse" name="buyResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="getAvailability">
 
          <wsdl:input message="impl:getAvailabilityRequest" name="getAvailabilityRequest">
@@ -216,13 +192,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="showCars">
+      <wsdl:operation name="buy">
 
-         <wsdl:input message="impl:showCarsRequest" name="showCarsRequest">
+         <wsdl:input message="impl:buyRequest" name="buyRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:showCarsResponse" name="showCarsResponse">
+         <wsdl:output message="impl:buyResponse" name="buyResponse">
 
        </wsdl:output>
 
@@ -240,47 +216,35 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="showCars">
+
+         <wsdl:input message="impl:showCarsRequest" name="showCarsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:showCarsResponse" name="showCarsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPrice">
+
+         <wsdl:input message="impl:getPriceRequest" name="getPriceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPriceResponse" name="getPriceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="GarageSoapBinding" type="impl:Garage">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-      <wsdl:operation name="getPrice">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getPriceRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getPriceResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buy">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="buyRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="buyResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="getAvailability">
 
@@ -318,17 +282,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="showCars">
+      <wsdl:operation name="buy">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="showCarsRequest">
+         <wsdl:input name="buyRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="showCarsResponse">
+         <wsdl:output name="buyResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -347,6 +311,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="addCarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="showCars">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="showCarsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="showCarsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPrice">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPriceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPriceResponse">
 
             <wsdlsoap:body use="literal"/>
 

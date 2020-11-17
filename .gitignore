@@ -1,3 +1,43 @@
 .metadata/
 /.project
 IfsCars/.classpath
+IfsCarsClient/.classpath
+IfsCarsClient/.project
+IfsCarsClient/.settings/.jsdtscope
+IfsCarsClient/.settings/org.eclipse.core.resources.prefs
+IfsCarsClient/.settings/org.eclipse.jdt.core.prefs
+IfsCarsClient/.settings/org.eclipse.wst.common.component
+IfsCarsClient/.settings/org.eclipse.wst.common.project.facet.core.xml
+IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.container
+IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.name
+IfsCarsClient/WebContent/META-INF/MANIFEST.MF
+IfsCarsClient/WebContent/WEB-INF/lib/axis.jar
+IfsCarsClient/WebContent/WEB-INF/lib/commons-discovery-0.2.jar
+IfsCarsClient/WebContent/WEB-INF/lib/commons-logging.jar
+IfsCarsClient/WebContent/WEB-INF/lib/jaxrpc.jar
+IfsCarsClient/WebContent/WEB-INF/lib/saaj.jar
+IfsCarsClient/WebContent/WEB-INF/lib/wsdl4j.jar
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
+IfsCarsService/WebContent/WEB-INF/server-config.wsdd
+IfsCarsService/WebContent/wsdl/Garage.wsdl
+Servers/.project
+Servers/.settings/org.eclipse.wst.server.core.prefs
+Servers/Tomcat v7.0 Server at localhost-config/catalina.policy
+Servers/Tomcat v7.0 Server at localhost-config/catalina.properties
+Servers/Tomcat v7.0 Server at localhost-config/context.xml
+Servers/Tomcat v7.0 Server at localhost-config/server.xml
+Servers/Tomcat v7.0 Server at localhost-config/tomcat-users.xml
+Servers/Tomcat v7.0 Server at localhost-config/web.xml
+IfsCarsService/WebContent/wsdl/Garage.wsdl
+IfsCarsService/WebContent/WEB-INF/server-config.wsdd
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
+IfsCarsService/WebContent/WEB-INF/server-config.wsdd
+IfsCarsService/WebContent/wsdl/Garage.wsdl
+IfsCarsService/WebContent/wsdl/Garage.wsdl
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
+IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
+IfsCarsService/WebContent/WEB-INF/server-config.wsdd
