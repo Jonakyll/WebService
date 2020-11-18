@@ -26,6 +26,10 @@ public interface ICar extends Remote {
 
 	Long getNextTenantId() throws RemoteException;
 	
+	Long getPrice() throws RemoteException;
+	
+	void setprice(Long price) throws RemoteException;
+	
 	void setNextTenantId(Long customerId) throws RemoteException;
 
 }

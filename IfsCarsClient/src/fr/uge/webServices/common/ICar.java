@@ -4,12 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.Queue;
 
-/**
- * 
- * @author Jonathan CHU Interface for remote objects that represent cars that
- *         can be located.
- *
- */
 public interface ICar extends Remote {
 
 	Long getId() throws RemoteException;
@@ -31,11 +25,7 @@ public interface ICar extends Remote {
 	void removeTenant() throws RemoteException;
 
 	Long getNextTenantId() throws RemoteException;
-
-	Long getPrice() throws RemoteException;
-
-	void setprice(Long price) throws RemoteException;
-
+	
 	void setNextTenantId(Long customerId) throws RemoteException;
 
 }

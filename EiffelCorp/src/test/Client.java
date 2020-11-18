@@ -56,6 +56,7 @@ public class Client {
 		customer1.returnCar(garage, garage.getCars().get(0));
 		customer2.returnCar(garage, garage.getCars().get(1));
 		customer3.returnCar(garage, garage.getCars().get(1));
+		
 		customer1.rateCar(garage, garage.getCars().get(0), 3F);
 		customer1.rateCar(garage, garage.getCars().get(0), 5F);
 		customer1.rateCar(garage, garage.getCars().get(0), 4F);
@@ -112,6 +113,11 @@ public class Client {
 		System.out.println("\n" + customer3.getId());
 		for (var car : customer3.getCars()) {
 			System.out.println(car);
+		}
+		
+		System.out.println("\n=====CARS TO BUY =====");
+		for (var car : garage.getCarsToBuy()) {
+			System.out.println(car.getId());
 		}
 		
 	}
