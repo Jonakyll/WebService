@@ -85,4 +85,16 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 		}
 	}
 
+	@Override
+	public List<ICar> getCarsToBuy() throws RemoteException {
+		return cars.values().stream().filter(car -> {
+			try {
+				return car.getRating() != -1L;
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}).collect(Collectors.toList());
+	}
+
 }

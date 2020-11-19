@@ -18,6 +18,7 @@ public class Car extends UnicastRemoteObject implements ICar {
 	private Queue<Long> tenants = new ArrayBlockingQueue<Long>(10);
 
 	private Long nextTenant;
+	private Long price;
 
 	public Car() throws RemoteException {
 
@@ -35,7 +36,7 @@ public class Car extends UnicastRemoteObject implements ICar {
 
 	@Override
 	public float getRating() throws RemoteException {
-		return rating.isEmpty() ? 0F : rating.stream().reduce(0F, Float::sum) / rating.size();
+		return rating.isEmpty() ? -1L : rating.stream().reduce(0F, Float::sum) / rating.size();
 	}
 
 	@Override
@@ -74,6 +75,16 @@ public class Car extends UnicastRemoteObject implements ICar {
 	@Override
 	public Long getNextTenantId() throws RemoteException {
 		return nextTenant;
+	}
+
+	@Override
+	public Long getPrice() throws RemoteException {
+		return price;
+	}
+
+	@Override
+	public void setprice(Long price) throws RemoteException {
+		this.price = price;
 	}
 
 	@Override

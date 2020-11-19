@@ -11,9 +11,10 @@ public interface IGarage extends Remote {
 	void removeCar(Long customerId, ICar car) throws RemoteException;
 
 	ICar findCar(Long id) throws RemoteException;
-	
+
 	List<ICar> getCars() throws RemoteException;
-	
+
 	void rateCar(ICar car, float rating) throws RemoteException;
 
+	List<ICar> getCarsToBuy() throws RemoteException;
 }
