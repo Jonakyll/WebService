@@ -1,6 +1,8 @@
 package fr.uge.webServices.project;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -46,11 +48,16 @@ public class Garage {
 		cars.put(car.getId(), car);
 	}
 
-	public void showCars() {
-		System.out.println("show cars");
+	public Car[] getCars() {
+		List<Car> res = new ArrayList<Car>();
 		for (Car car : cars.values()) {
-			System.out.println(car);
+			res.add(car);
 		}
+		Car[] cars = new Car[res.size()];
+		for (int i = 0; i < res.size(); ++i) {
+			cars[i] = res.get(i);
+		}
+		return cars;
 	}
 
 }
