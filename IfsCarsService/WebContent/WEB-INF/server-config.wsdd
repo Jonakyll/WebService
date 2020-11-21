@@ -29,19 +29,19 @@
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
  <ns1:service name="Garage" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="getAvailability" qname="ns1:getAvailability" returnQName="ns1:getAvailabilityReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:car" type="ns1:Car"/>
-  </ns2:operation>
-  <ns1:operation name="addToCart" qname="ns2:addToCart" soapAction="" xmlns:ns2="http://project.webServices.uge.fr"/>
-  <ns1:operation name="buy" qname="ns3:buy" soapAction="" xmlns:ns3="http://project.webServices.uge.fr"/>
-  <ns1:operation name="addCar" qname="ns4:addCar" soapAction="" xmlns:ns4="http://project.webServices.uge.fr">
-   <ns1:parameter qname="ns4:car" type="ns4:Car"/>
+  <ns2:operation name="buy" qname="ns1:buy" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:operation name="getPrice" qname="ns2:getPrice" returnQName="ns2:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns2="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:car" type="ns2:Car"/>
   </ns1:operation>
-  <ns1:operation name="showCars" qname="ns5:showCars" soapAction="" xmlns:ns5="http://project.webServices.uge.fr"/>
-  <ns1:operation name="getPrice" qname="ns6:getPrice" returnQName="ns6:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:car" type="ns6:Car"/>
+  <ns1:operation name="getAvailability" qname="ns3:getAvailability" returnQName="ns3:getAvailabilityReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:car" type="ns3:Car"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getAvailability addCar buy addToCart showCars getPrice"/>
+  <ns1:operation name="addToCart" qname="ns4:addToCart" soapAction="" xmlns:ns4="http://project.webServices.uge.fr"/>
+  <ns1:operation name="addCar" qname="ns5:addCar" soapAction="" xmlns:ns5="http://project.webServices.uge.fr">
+   <ns1:parameter qname="ns5:car" type="ns5:Car"/>
+  </ns1:operation>
+  <ns1:operation name="getCars" qname="ns6:getCars" returnQName="ns6:getCarsReturn" returnType="ns6:Car" soapAction="" xmlns:ns6="http://project.webServices.uge.fr"/>
+  <ns1:parameter name="allowedMethods" value="getAvailability addCar buy getCars addToCart getPrice"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Garage"/>
   <ns1:parameter name="className" value="fr.uge.webServices.project.Garage"/>
@@ -49,8 +49,8 @@
   <ns1:parameter name="schemaQualified" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlServiceElement" value="GarageService"/>
-  <ns1:parameter name="scope" value="application"/>
   <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns7:Car" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.webServices.project.Car" xmlns:ns7="http://project.webServices.uge.fr"/>
+  <ns1:arrayMapping innerType="xsd:long" languageSpecificType="java:long[]" qname="ns8:ArrayOf_xsd_long" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
