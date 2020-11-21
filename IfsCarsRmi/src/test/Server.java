@@ -18,18 +18,22 @@ public class Server {
 		ICar car = new Car();
 		car.setId(1111L);
 		car.setAvailability(true);
+		car.setprice(10_000L);
 
 		ICar car2 = new Car();
 		car2.setId(2222L);
 		car2.setAvailability(true);
+		car2.setprice(20_000L);
 		
 		ICar car3 = new Car();
 		car3.setId(3333L);
 		car3.setAvailability(true);
+		car3.setprice(30_000L);
 		
 		ICar car4 = new Car();
 		car4.setId(4444L);
 		car4.setAvailability(true);
+		car4.setprice(40_000L);
 		
 		IGarage garage = new Garage();
 		((Garage) garage).addCarToRent(car);
