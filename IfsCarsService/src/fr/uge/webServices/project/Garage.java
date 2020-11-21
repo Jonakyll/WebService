@@ -1,10 +1,17 @@
 package fr.uge.webServices.project;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import fr.uge.webServices.common.ICar;
+import fr.uge.webServices.common.IGarage;
 
 public class Garage {
 
@@ -12,7 +19,6 @@ public class Garage {
 
 	public Long getPrice(Car car) {
 		Objects.requireNonNull(car);
-		System.out.println("get price");
 		Car c = cars.get(car.getId());
 		if (c != null) {
 			return c.getPrice();
@@ -24,7 +30,6 @@ public class Garage {
 
 	public boolean getAvailability(Car car) {
 		Objects.requireNonNull(car);
-		System.out.println("get availability");
 		Car c = cars.get(car.getId());
 		if (c != null) {
 			return c.getAvailability();
@@ -35,16 +40,13 @@ public class Garage {
 	}
 
 	public void addToCart() {
-		System.out.println("add to card");
 	}
 
 	public void buy() {
-		System.out.println("buy");
 	}
 
 	public void addCar(Car car) {
 		Objects.requireNonNull(car);
-		System.out.println("add car");
 		cars.put(car.getId(), car);
 	}
 
@@ -58,6 +60,24 @@ public class Garage {
 			cars[i] = res.get(i);
 		}
 		return cars;
+	}
+
+	public void initCars() {
+		try {
+			IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
+
+			for (ICar c : iGarage.getCars()) {
+				Car car = new Car();
+				car.setId(c.getId());
+				car.setAvailability(c.getAvailability());
+				car.setPrice(c.getPrice());
+				this.addCar(car);
+			}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

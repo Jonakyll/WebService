@@ -29,7 +29,13 @@ public class Car {
 	}
 
 	public Long[] getTenants() {
-		return (Long[]) tenants.toArray();
+		List<Long> res = new ArrayList<Long>();
+		tenants.forEach(l -> res.add(l));
+		Long[] cars = new Long[res.size()];
+		for (int i = 0; i < res.size(); ++i) {
+			cars[i] = res.get(i);
+		}
+		return cars;
 	}
 
 	public void setId(Long id) {
@@ -63,7 +69,7 @@ public class Car {
 		return price;
 	}
 
-	public void setprice(Long price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 

@@ -1,33 +1,31 @@
 package main;
 
 import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
-import fr.uge.webServices.common.ICar;
-import fr.uge.webServices.common.IGarage;
 import fr.uge.webServices.project.Car;
 import fr.uge.webServices.project.Garage;
 import fr.uge.webServices.project.GarageServiceLocator;
 
 public class Main {
 
-	public static void main(String[] args)
-			throws ServiceException, RemoteException, MalformedURLException, NotBoundException {
-		IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
+	public static void main(String[] args) throws ServiceException, RemoteException {
+//		IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 		Garage garage = new GarageServiceLocator().getGarage();
+		garage.initCars();
 
-		for (ICar c : iGarage.getCars()) {
-
-			Car car = new Car();
-			car.setId(c.getId());
-			car.setAvailability(c.getAvailability());
-			car.setPrice(c.getPrice());
-			garage.addCar(car);
-		}
+//		for (ICar c : iGarage.getCars()) {
+//
+//			Car car = new Car();
+//			car.setId(c.getId());
+//			car.setAvailability(c.getAvailability());
+//			car.setPrice(c.getPrice());
+//			garage.addCar(car);
+//			
+//		}
 
 //		garage.getPrice(car);
 //		garage.getAvailability(car);
