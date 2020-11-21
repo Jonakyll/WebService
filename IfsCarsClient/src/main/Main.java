@@ -1,7 +1,5 @@
 package main;
 
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
@@ -15,7 +13,6 @@ public class Main {
 	public static void main(String[] args) throws ServiceException, RemoteException {
 //		IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 		Garage garage = new GarageServiceLocator().getGarage();
-		garage.initCars();
 
 //		for (ICar c : iGarage.getCars()) {
 //
@@ -45,5 +42,4 @@ public class Main {
 //		garage.setCarsToBuy(iGarage.getCarsToBuy());
 
 	}
-
 }

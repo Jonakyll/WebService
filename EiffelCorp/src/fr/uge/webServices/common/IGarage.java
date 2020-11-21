@@ -17,5 +17,4 @@ public interface IGarage extends Remote {
 	void rateCar(ICar car, float rating) throws RemoteException;
 
 	List<ICar> getCarsToBuy() throws RemoteException;
-
 }
