@@ -1,9 +1,6 @@
 package fr.uge.webServices.project;
 
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +13,22 @@ import fr.uge.webServices.common.IGarage;
 public class Garage {
 
 	private Map<Long, Car> cars = new HashMap<Long, Car>();
+
+	public Garage() {
+		try {
+			IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
+			for (ICar c : iGarage.getCarsToBuy()) {
+				Car car = new Car();
+				car.setId(c.getId());
+				car.setAvailability(c.getAvailability());
+				car.setPrice(c.getPrice());
+				this.addCar(car);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public Long getPrice(Car car) {
 		Objects.requireNonNull(car);
@@ -60,24 +73,6 @@ public class Garage {
 			cars[i] = res.get(i);
 		}
 		return cars;
-	}
-
-	public void initCars() {
-		try {
-			IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
-
-			for (ICar c : iGarage.getCars()) {
-				Car car = new Car();
-				car.setId(c.getId());
-				car.setAvailability(c.getAvailability());
-				car.setPrice(c.getPrice());
-				this.addCar(car);
-			}
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 
 }

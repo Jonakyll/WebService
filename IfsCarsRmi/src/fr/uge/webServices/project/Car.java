@@ -83,7 +83,7 @@ public class Car extends UnicastRemoteObject implements ICar {
 	}
 
 	@Override
-	public void setprice(Long price) throws RemoteException {
+	public void setPrice(Long price) throws RemoteException {
 		this.price = price;
 	}
 
