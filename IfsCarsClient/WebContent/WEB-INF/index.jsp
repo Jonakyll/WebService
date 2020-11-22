@@ -17,6 +17,15 @@
 		out.println((Integer) request.getAttribute("amount")+ " euros");
 	}
 %></h2>
+<%
+	java.util.List<Car> cart = (java.util.List<Car>) request.getAttribute("cart");
+	for (Car car : cart) {
+		out.println("<p>");
+		out.println("id\t\t" + car.getId());
+		out.println("price\t\t" + car.getPrice() + "\n");
+		out.println("</p>");
+	}
+%>
 <h1>Nos voitures:</h1>
 	<%
 	Car[] cars = (fr.uge.webServices.project.Car [])request.getAttribute("cars");

@@ -1,6 +1,8 @@
 package fr.uge.webServices.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +36,10 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Car[] cars = client.getCars();
 		int amount = client.getAmountToPay();
+		List<Car> cart = client.getCart();
 		request.setAttribute("amount", amount);
 		request.setAttribute("cars", cars);
+		request.setAttribute("cart", cart);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 	}
 
@@ -46,7 +50,7 @@ public class HomeServlet extends HttpServlet {
 		Car[] cars = client.getCars();
 		for(int i=0;i<cars.length;i++) {
 			if (request.getParameter(cars[i].getId().toString()) != null) {
-				client.addToBucket(i);
+				client.addToCart(i);
 			}
 		}
 		int amount = client.getAmountToPay();
