@@ -9,14 +9,15 @@
 </head>
 <body>
 <h1>Votre panier:</h1>
-<h2>Montant de votre panier:
+<h2>Montant:
 <%
 	if (request.getAttribute("amount")==null){
-		out.println("0 euros");
+		out.println(" 0 euros");
 	}else{
-		out.println((Integer) request.getAttribute("amount")+ " euros");
+		out.println(" "+(Integer) request.getAttribute("amount")+ " euros");
 	}
 %></h2>
+<h2>Contenu: </h2>
 <%
 	java.util.List<Car> cart = (java.util.List<Car>) request.getAttribute("cart");
 	for (Car car : cart) {
@@ -26,6 +27,7 @@
 		out.println("</p>");
 	}
 %>
+<form method = "post" action ="/IfsCarsClient/Payment"> <input type="submit" value="Passer au paiment" name="HOME"></form>
 <h1>Nos voitures:</h1>
 	<%
 	Car[] cars = (fr.uge.webServices.project.Car [])request.getAttribute("cars");

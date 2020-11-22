@@ -1,6 +1,8 @@
 package fr.uge.webServices.servlets;
 
 import java.io.IOException;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,7 @@ public class PaymentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.getServletContext().getRequestDispatcher("/WEB-INF/payment.jsp").forward(request, response);
 	}
 
 	/**
@@ -35,6 +37,14 @@ public class PaymentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("on est passé par post");
+		System.out.println("---------------------IL FAUT PEUT ETRE UTILISER REQUEST.GETSESSION POUR LES ATTRIBUTS");
+		Enumeration<String> res = request.getParameterNames();
+		res.asIterator().forEachRemaining(x->System.out.println(x));
+		if (request.getParameter("HOME")!=null) {
+			System.out.println("ttataatatatat");
+		}
+
 		doGet(request, response);
 	}
 

@@ -37,6 +37,7 @@ public class HomeServlet extends HttpServlet {
 		Car[] cars = client.getCars();
 		int amount = client.getAmountToPay();
 		List<Car> cart = client.getCart();
+		request.setAttribute("client", client);
 		request.setAttribute("amount", amount);
 		request.setAttribute("cars", cars);
 		request.setAttribute("cart", cart);
@@ -51,11 +52,14 @@ public class HomeServlet extends HttpServlet {
 		for(int i=0;i<cars.length;i++) {
 			if (request.getParameter(cars[i].getId().toString()) != null) {
 				client.addToCart(i);
+				List<Car> cart = client.getCart();
+				int amount = client.getAmountToPay();
+				request.setAttribute("client", client);
+				request.setAttribute("amount", amount);
+				request.setAttribute("cart", cart);
+				this.doGet(request, response);
 			}
 		}
-		int amount = client.getAmountToPay();
-		request.setAttribute("amount", amount);
-		this.doGet(request, response);
 	}
 
 }
