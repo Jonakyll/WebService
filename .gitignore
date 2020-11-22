@@ -10,13 +10,6 @@ IfsCarsClient/.settings/org.eclipse.wst.common.component
 IfsCarsClient/.settings/org.eclipse.wst.common.project.facet.core.xml
 IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.container
 IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.name
-IfsCarsClient/WebContent/META-INF/MANIFEST.MF
-IfsCarsClient/WebContent/WEB-INF/lib/axis.jar
-IfsCarsClient/WebContent/WEB-INF/lib/commons-discovery-0.2.jar
-IfsCarsClient/WebContent/WEB-INF/lib/commons-logging.jar
-IfsCarsClient/WebContent/WEB-INF/lib/jaxrpc.jar
-IfsCarsClient/WebContent/WEB-INF/lib/saaj.jar
-IfsCarsClient/WebContent/WEB-INF/lib/wsdl4j.jar
 IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
 IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
 IfsCarsService/WebContent/WEB-INF/server-config.wsdd
