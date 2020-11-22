@@ -34,7 +34,9 @@
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:amountEUR" xmlns:pns="http://project.webServices.uge.fr" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="display addAccount payVehicle depositOf"/>
+      <operation name="stringDisplay" qname="operNS:stringDisplay" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:stringDisplayReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="stringDisplay display addAccount payVehicle depositOf"/>
 
   </service>
 </deployment>

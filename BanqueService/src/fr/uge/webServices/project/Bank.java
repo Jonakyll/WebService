@@ -74,6 +74,15 @@ public class Bank {
 		}
 	}
 	
+	public String stringDisplay() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("AFFICHAGE DE LA BANQUE:\n");
+		for (Account account : accountMap.values()) {
+			builder.append(account);
+		}
+		return builder.toString();
+	}
+	
 	
 	
 	
