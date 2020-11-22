@@ -50,6 +50,7 @@
   <ns1:parameter name="schemaQualified" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlServiceElement" value="GarageService"/>
+  <ns1:parameter name="scope" value="session"/>
   <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:Car" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.webServices.project.Car" xmlns:ns8="http://project.webServices.uge.fr"/>
   <ns1:arrayMapping innerType="xsd:long" languageSpecificType="java:long[]" qname="ns9:ArrayOf_xsd_long" xmlns:ns9="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
  </ns1:service>

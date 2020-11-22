@@ -18,6 +18,8 @@ public class Garage {
 
 	public Garage() {
 		try {
+			Bank bank = new BankServiceLocator().getBank();
+			((BankSoapBindingStub) bank).setMaintainSession(true);
 			IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 			for (ICar c : iGarage.getCarsToBuy()) {
 				Car car = new Car();
