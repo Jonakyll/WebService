@@ -1,15 +1,6 @@
 .metadata/
 /.project
 IfsCars/.classpath
-IfsCarsClient/.classpath
-IfsCarsClient/.project
-IfsCarsClient/.settings/.jsdtscope
-IfsCarsClient/.settings/org.eclipse.core.resources.prefs
-IfsCarsClient/.settings/org.eclipse.jdt.core.prefs
-IfsCarsClient/.settings/org.eclipse.wst.common.component
-IfsCarsClient/.settings/org.eclipse.wst.common.project.facet.core.xml
-IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.container
-IfsCarsClient/.settings/org.eclipse.wst.jsdt.ui.superType.name
 IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd
 IfsCarsService/WebContent/WEB-INF/GarageService/fr/uge/webServices/project/deploy.wsdd.bak
 IfsCarsService/WebContent/WEB-INF/server-config.wsdd
