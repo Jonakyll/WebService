@@ -13,6 +13,7 @@ public class Main {
 	public static void main(String[] args) throws ServiceException, RemoteException {
 //		IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 		Garage garage = new GarageServiceLocator().getGarage();
+		//System.out.println(garage.displayBankString());
 
 //		for (ICar c : iGarage.getCars()) {
 //

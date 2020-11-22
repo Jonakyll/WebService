@@ -21,6 +21,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="addAccountResponse">
     <complexType/>
    </element>
+   <element name="payVehicle">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amountEUR" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payVehicleResponse">
+    <complexType/>
+   </element>
    <element name="depositOf">
     <complexType>
      <sequence>
@@ -32,16 +43,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="depositOfResponse">
     <complexType/>
    </element>
-   <element name="payVehicle">
+   <element name="stringDisplay">
+    <complexType/>
+   </element>
+   <element name="stringDisplayResponse">
     <complexType>
      <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="amountEUR" type="xsd:double"/>
+      <element name="stringDisplayReturn" type="xsd:string"/>
      </sequence>
     </complexType>
-   </element>
-   <element name="payVehicleResponse">
-    <complexType/>
    </element>
   </schema>
  </wsdl:types>
@@ -70,6 +80,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="stringDisplayResponse">
+
+      <wsdl:part element="impl:stringDisplayResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="addAccountResponse">
 
       <wsdl:part element="impl:addAccountResponse" name="parameters">
@@ -89,6 +107,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="depositOfResponse">
 
       <wsdl:part element="impl:depositOfResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stringDisplayRequest">
+
+      <wsdl:part element="impl:stringDisplay" name="parameters">
 
       </wsdl:part>
 
@@ -136,6 +162,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="payVehicle">
+
+         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="depositOf">
 
          <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
@@ -148,13 +186,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
+      <wsdl:operation name="stringDisplay">
 
-         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
+         <wsdl:input message="impl:stringDisplayRequest" name="stringDisplayRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
+         <wsdl:output message="impl:stringDisplayResponse" name="stringDisplayResponse">
 
        </wsdl:output>
 
@@ -202,6 +240,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="payVehicle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="payVehicleRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="payVehicleResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="depositOf">
 
          <wsdlsoap:operation soapAction=""/>
@@ -220,17 +276,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
+      <wsdl:operation name="stringDisplay">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="payVehicleRequest">
+         <wsdl:input name="stringDisplayRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="payVehicleResponse">
+         <wsdl:output name="stringDisplayResponse">
 
             <wsdlsoap:body use="literal"/>
 

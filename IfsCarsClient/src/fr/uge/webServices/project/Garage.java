@@ -8,10 +8,11 @@
 package fr.uge.webServices.project;
 
 public interface Garage extends java.rmi.Remote {
-    public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
-    public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
-    public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
-    public void buy() throws java.rmi.RemoteException;
     public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException;
+    public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
+    public java.lang.String displayBankString() throws java.rmi.RemoteException;
+    public void buy() throws java.rmi.RemoteException;
+    public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
     public void addToCart() throws java.rmi.RemoteException;
+    public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException;
 }

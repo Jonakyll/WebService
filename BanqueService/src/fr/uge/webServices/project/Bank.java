@@ -13,9 +13,23 @@ public class Bank {
 	private HashMap<Long, Account> accountMap;
 	private CurrencyServerSoap soapServer;
 	
-	public Bank() throws ServiceException {
+	public Bank() throws ServiceException, RemoteException {
 		this.accountMap =new HashMap<Long, Account>();
 		this.soapServer = new CurrencyServerLocator().getCurrencyServerSoap();
+		initBank();
+	}
+	
+	private void initBank() throws RemoteException {
+		this.addAccount(1L, "USD");
+		this.addAccount(2L, "JPY");
+		this.addAccount(3L, "EUR");
+		this.addAccount(4L, "USD");
+		this.addAccount(5L, "USD");
+		this.addAccount(6L, "USD");
+		this.addAccount(7L, "USD");
+		this.addAccount(8L, "USD");
+		this.addAccount(9L, "USD");
+		
 	}
 	
 	public void addAccount(Long id, String currency) throws RemoteException {
@@ -72,6 +86,15 @@ public class Bank {
 		for (Account account : accountMap.values()) {
 			System.out.println(account);
 		}
+	}
+	
+	public String stringDisplay() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("AFFICHAGE DE LA BANQUE:\n");
+		for (Account account : accountMap.values()) {
+			builder.append(account);
+		}
+		return builder.toString();
 	}
 	
 	
