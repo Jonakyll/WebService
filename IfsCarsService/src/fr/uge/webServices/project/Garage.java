@@ -1,6 +1,7 @@
 package fr.uge.webServices.project;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import fr.uge.webServices.common.IGarage;
 public class Garage {
 
 	private Map<Long, Car> cars = new HashMap<Long, Car>();
+	private Bank bank;
 
 	public Garage() {
 		try {
@@ -28,6 +30,10 @@ public class Garage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public String displayBankString() throws RemoteException {
+		return bank.stringDisplay();
 	}
 
 	public Long getPrice(Car car) {

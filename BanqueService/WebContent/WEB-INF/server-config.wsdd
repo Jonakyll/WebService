@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -34,13 +34,13 @@
    <ns1:parameter qname="ns2:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
    <ns1:parameter qname="ns2:currency" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="depositOf" qname="ns3:depositOf" soapAction="" xmlns:ns3="http://project.webServices.uge.fr">
+  <ns1:operation name="payVehicle" qname="ns3:payVehicle" soapAction="" xmlns:ns3="http://project.webServices.uge.fr">
    <ns1:parameter qname="ns3:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns3:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:amountEUR" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="payVehicle" qname="ns4:payVehicle" soapAction="" xmlns:ns4="http://project.webServices.uge.fr">
+  <ns1:operation name="depositOf" qname="ns4:depositOf" soapAction="" xmlns:ns4="http://project.webServices.uge.fr">
    <ns1:parameter qname="ns4:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns4:amountEUR" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:operation name="stringDisplay" qname="ns5:stringDisplay" returnQName="ns5:stringDisplayReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   <ns1:parameter name="allowedMethods" value="stringDisplay display addAccount payVehicle depositOf"/>
@@ -51,6 +51,7 @@
   <ns1:parameter name="schemaQualified" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlServiceElement" value="BankService"/>
+  <ns1:parameter name="scope" value="session"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
