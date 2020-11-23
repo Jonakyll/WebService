@@ -3,7 +3,6 @@
 	<name>BanqueService</name>
 	<comment></comment>
 	<projects>
-		<project>BanqueClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
