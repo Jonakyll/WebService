@@ -32,14 +32,16 @@ public class Bank {
 		
 	}
 	
-	public void addAccount(Long id, String currency) throws RemoteException {
+	public int addAccount(Long id, String currency) throws RemoteException {
 		if (!soapServer.currencyExists("", currency, true)){
 			System.out.println(soapServer.currencyExists("", currency, true));
 			System.out.println("Compte non ajouté car currency inexistante");
+			return -1;
 		}
-		
+		int oldSize = accountMap.size();
 		accountMap.put(id, new Account(id, currency));
 		System.out.println("compte "+id+" ajouté Taille de la map: "+accountMap.size());
+		return accountMap.size()-oldSize;
 	}
 	
 	/*public void addAccount(Long id, Account account) throws RemoteException {

@@ -17,7 +17,7 @@ public class Client {
 	private List<Car> cart = new ArrayList<Car>();
 
 	public Client() throws ServiceException {
-		this.garage = new GarageServiceLocator().getGarage();;
+		this.garage = new GarageServiceLocator().getGarage();
 	}
 	
 	
@@ -40,6 +40,11 @@ public class Client {
 			}
 		}
 		return false;
+	}
+	
+	public void cleanCart() {
+		amountToPay = 0;
+		cart = new ArrayList<Car>();
 	}
 	
 	public void addToCart(int i) throws RemoteException {
