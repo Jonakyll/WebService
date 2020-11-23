@@ -21,17 +21,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="addAccountResponse">
     <complexType/>
    </element>
-   <element name="payVehicle">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="amountEUR" type="xsd:double"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="payVehicleResponse">
-    <complexType/>
-   </element>
    <element name="depositOf">
     <complexType>
      <sequence>
@@ -41,6 +30,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="depositOfResponse">
+    <complexType/>
+   </element>
+   <element name="payVehicle">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amountEUR" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payVehicleResponse">
     <complexType/>
    </element>
    <element name="stringDisplay">
@@ -162,18 +162,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
-
-         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="depositOf">
 
          <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
@@ -181,6 +169,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payVehicle">
+
+         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
 
        </wsdl:output>
 
@@ -240,24 +240,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="payVehicleRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="payVehicleResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="depositOf">
 
          <wsdlsoap:operation soapAction=""/>
@@ -269,6 +251,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="depositOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payVehicle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="payVehicleRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="payVehicleResponse">
 
             <wsdlsoap:body use="literal"/>
 

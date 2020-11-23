@@ -37,9 +37,10 @@ public class HomeServlet extends HttpServlet {
 		Car[] cars = client.getCars();
 		int amount = client.getAmountToPay();
 		List<Car> cart = client.getCart();
-		request.setAttribute("amount", amount);
-		request.setAttribute("cars", cars);
-		request.setAttribute("cart", cart);
+		request.getSession().setAttribute("client", client);
+		request.getSession().setAttribute("amount", amount);
+		request.getSession().setAttribute("cars", cars);		
+		request.getSession().setAttribute("cart", cart);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 	}
 
@@ -51,11 +52,21 @@ public class HomeServlet extends HttpServlet {
 		for(int i=0;i<cars.length;i++) {
 			if (request.getParameter(cars[i].getId().toString()) != null) {
 				client.addToCart(i);
+				List<Car> cart = client.getCart();
+				int amount = client.getAmountToPay();
+				request.getSession().setAttribute("client", client);
+				request.getSession().setAttribute("amount", amount);
+				request.getSession().setAttribute("cart", cart);
+				this.doGet(request, response);
 			}
 		}
-		int amount = client.getAmountToPay();
-		request.setAttribute("amount", amount);
-		this.doGet(request, response);
+		if(request.getParameter("clean")!=null) {
+			client.cleanCart();
+			request.getSession().setAttribute("client", client);
+			request.getSession().setAttribute("amount", client.getAmountToPay());
+			request.getSession().setAttribute("cart",client.getCart());
+			this.doGet(request, response);
+		}
 	}
 
 }

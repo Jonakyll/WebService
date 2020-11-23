@@ -12,9 +12,11 @@ import fr.uge.webServices.project.Garage;
 public class Main {
 
 	public static void main(String[] args) throws RemoteException, ServiceException {
-		Bank bank = new BankServiceLocator().getBank();
-		((BankSoapBindingStub) bank).setMaintainSession(true);
-		bank.display();
+//		Bank bank = new BankServiceLocator().getBank();
+//		((BankSoapBindingStub) bank).setMaintainSession(true);
+//		bank.display();
+		Garage garage = new Garage();
+		System.out.println(garage.displayBankString());
 	}
 
 }

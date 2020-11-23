@@ -18,8 +18,7 @@ public class Garage {
 
 	public Garage() {
 		try {
-			Bank bank = new BankServiceLocator().getBank();
-			((BankSoapBindingStub) bank).setMaintainSession(true);
+			this.bank = new BankServiceLocator().getBank();
 			IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
 			for (ICar c : iGarage.getCarsToBuy()) {
 				Car car = new Car();
@@ -33,6 +32,14 @@ public class Garage {
 			e.printStackTrace();
 		}
 	}
+	
+	public int addAccount(long id, String currency, int amount) throws RemoteException {
+		//renvoie 1 si good
+		this.bank.addAccount(id, currency);
+		this.bank.depositOf(id, amount);
+		return 0;
+	}
+	
 	
 	public String displayBankString() throws RemoteException {
 		return bank.stringDisplay();

@@ -2,6 +2,7 @@ package fr.uge.webServices.commons;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -16,23 +17,43 @@ public class Client {
 	private List<Car> cart = new ArrayList<Car>();
 
 	public Client() throws ServiceException {
-		this.garage = new GarageServiceLocator().getGarage();;
+		this.garage = new GarageServiceLocator().getGarage();
 	}
 	
 	
 	public Car[] getCars() throws RemoteException {
+//		List<Car> cars = Arrays.asList(garage.getCars());
+//		List<Car> res = new ArrayList<Car>();
+//		for (Car car : cars) {
+//			if (!containsVehicle(car.getId())) {
+//				res.add(car);
+//			}
+//		}
+//		return res.toArray(new Car[0]);
 		return garage.getCars();
+	}
+	
+	private boolean containsVehicle(long id) {
+		for (Car car : cart) {
+			if (car.getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void cleanCart() {
+		amountToPay = 0;
+		cart = new ArrayList<Car>();
 	}
 	
 	public void addToCart(int i) throws RemoteException {
 		Car carToAdd = garage.getCars()[i];
 		for (Car car : cart) {
-			if (car.getId() == carToAdd.getId()) {
-				System.out.println("--------------------------------------NANI-----------------------------------");
+			if (car.getId().equals(carToAdd.getId())) {
 				return;
 			}
 		}
-		System.out.println("--------------------------------------OOF-----------------------------------");
 		cart.add(carToAdd);
 		amountToPay += this.getCars()[i].getPrice();
 	}

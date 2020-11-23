@@ -16,13 +16,13 @@
         <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
         <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:currency" type="tns:string"/>
       </operation>
-      <operation xmlns:operNS="http://project.webServices.uge.fr" name="payVehicle" qname="operNS:payVehicle" soapAction="">
-        <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
-        <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:amountEUR" type="tns:double"/>
-      </operation>
       <operation xmlns:operNS="http://project.webServices.uge.fr" name="depositOf" qname="operNS:depositOf" soapAction="">
         <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
         <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:amount" type="tns:double"/>
+      </operation>
+      <operation xmlns:operNS="http://project.webServices.uge.fr" name="payVehicle" qname="operNS:payVehicle" soapAction="">
+        <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+        <parameter xmlns:pns="http://project.webServices.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:amountEUR" type="tns:double"/>
       </operation>
       <operation xmlns:operNS="http://project.webServices.uge.fr" xmlns:retNS="http://project.webServices.uge.fr" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="stringDisplay" qname="operNS:stringDisplay" returnQName="retNS:stringDisplayReturn" returnType="rtns:string" soapAction="">
       </operation>
