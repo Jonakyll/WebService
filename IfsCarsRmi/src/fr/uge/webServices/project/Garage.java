@@ -21,48 +21,44 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public boolean addCar(Long customerId, ICar car) throws RemoteException {
-		Objects.requireNonNull(car);
-		ICar c = cars.get(car.getId());
-		ICustomer customer = customers.get(customerId);
-		customer.notify("RENT CAR");
+	public ICar addCar(Long customerId, Long carId) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-		if (c != null) {
-			if (c.getAvailability() && (c.getTenants().isEmpty() || customerId.equals(c.getNextTenantId()))) {
+		ICar car = cars.get(carId);
 
-//			make the customer rent the car
-				c.setAvailability(false);
-				c.setNextTenantId(null);
-				return true;
+		if (car != null) {
+			if (car.getAvailability() && (car.getTenants().isEmpty() || customerId.equals(car.getNextTenantId()))) {
+
+//					make the customer rent the car
+				car.setAvailability(false);
+				car.setNextTenantId(null);
+
+				return car;
 			} else {
 
-//			put the customer into the waiting list
-				if (!c.getTenants().contains(customerId)) {
-					c.addTenant(customerId);
+//					put the customer into the waiting list
+				if (!car.getTenants().contains(customerId)) {
+					car.addTenant(customerId);
 				}
-				return false;
+				return null;
 			}
-		} else {
-			return false;
 		}
+		return null;
 	}
 
 	@Override
-	public void removeCar(Long customerId, ICar car) throws RemoteException {
-		Objects.requireNonNull(car);
-		ICar c = cars.get(car.getId());
-		ICustomer customer = customers.get(customerId);
-		customer.notify("RETURN CAR");
+	public void removeCar(Long customerId, Long carId) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-		if (c != null) {
+		ICar car = cars.get(carId);
 
-//		?
-			c.removeTenant();
+		if (car != null) {
+			car.removeTenant();
 
 			// ask to the client to rate the car
 			// ask to the next client if he wants to rent?
 
-			c.setAvailability(true);
+			car.setAvailability(true);
 		}
 	}
 
@@ -82,14 +78,12 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public void rateCar(Long customerId, ICar car, float rating) throws RemoteException {
-		Objects.requireNonNull(car);
-		ICar c = cars.get(car.getId());
-		ICustomer customer = customers.get(customerId);
-		customer.notify("RATE CAR");
+	public void rateCar(Long customerId, Long carId, float rating) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-		if (c != null) {
-			c.setRating(rating);
+		ICar car = cars.get(carId);
+		if (car != null) {
+			car.setRating(rating);
 		}
 	}
 
