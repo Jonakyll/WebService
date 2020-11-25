@@ -4,6 +4,50 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://project.webServices.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="addAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="currency" type="xsd:string"/>
+      <element name="amount" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="addAccountReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="checkAccountReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAmountAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAmountAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="getAmountAccountReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="getAvailability">
     <complexType>
      <sequence>
@@ -27,106 +71,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </sequence>
    </complexType>
    <element name="getAvailabilityResponse">
-
     <complexType>
      <sequence>
       <element name="getAvailabilityReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getPrice">
-
-    <complexType>
-     <sequence>
-      <element name="getAvailabilityReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="checkAccount">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addToCart">
-    <complexType/>
-   </element>
-   <element name="addToCartResponse">
-    <complexType/>
-   </element>
-   <element name="getCars">
-    <complexType/>
-   </element>
-   <element name="getCarsResponse">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="getCarsReturn" type="impl:Car"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addAccount">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="currency" type="xsd:string"/>
-      <element name="amount" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addAccountResponse">
-    <complexType>
-     <sequence>
-      <element name="addAccountReturn" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getCars">
-    <complexType/>
-   </element>
-   <element name="getCarsResponse">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="getCarsReturn" type="impl:Car"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addCarResponse">
-    <complexType/>
-   </element>
-   <element name="buy">
-    <complexType/>
-   </element>
-   <element name="buyResponse">
-    <complexType/>
-   </element>
-   <element name="addAccount">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="currency" type="xsd:string"/>
-      <element name="amount" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="addAccountResponse">
-    <complexType>
-     <sequence>
-      <element name="addAccountReturn" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAmountAccount">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAmountAccountResponse">
-    <complexType>
-     <sequence>
-      <element name="getAmountAccountReturn" type="xsd:double"/>
      </sequence>
     </complexType>
    </element>
@@ -144,6 +91,12 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="displayBank">
+    <complexType/>
+   </element>
+   <element name="displayBankResponse">
+    <complexType/>
+   </element>
    <element name="buy">
     <complexType/>
    </element>
@@ -159,6 +112,22 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    </element>
    <element name="addCarResponse">
     <complexType/>
+   </element>
+   <element name="addToCart">
+    <complexType/>
+   </element>
+   <element name="addToCartResponse">
+    <complexType/>
+   </element>
+   <element name="getCars">
+    <complexType/>
+   </element>
+   <element name="getCarsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getCarsReturn" type="impl:Car"/>
+     </sequence>
+    </complexType>
    </element>
   </schema>
  </wsdl:types>
@@ -266,6 +235,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       </wsdl:part>
 
    </wsdl:message>
+
    <wsdl:message name="buyResponse">
 
       <wsdl:part element="impl:buyResponse" name="parameters">
@@ -324,13 +294,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="Garage">
 
-      <wsdl:operation name="getAvailability">
+      <wsdl:operation name="addAccount">
 
-         <wsdl:input message="impl:getAvailabilityRequest" name="getAvailabilityRequest">
+         <wsdl:input message="impl:addAccountRequest" name="addAccountRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getAvailabilityResponse" name="getAvailabilityResponse">
+         <wsdl:output message="impl:addAccountResponse" name="addAccountResponse">
 
        </wsdl:output>
 
@@ -348,74 +318,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="displayBank">
+      <wsdl:operation name="getAmountAccount">
 
-         <wsdl:input message="impl:displayBankRequest" name="displayBankRequest">
+         <wsdl:input message="impl:getAmountAccountRequest" name="getAmountAccountRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:displayBankResponse" name="displayBankResponse">
+         <wsdl:output message="impl:getAmountAccountResponse" name="getAmountAccountResponse">
 
        </wsdl:output>
 
       </wsdl:operation>
 
-      <wsdl:operation name="getCars">
+      <wsdl:operation name="getAvailability">
 
          <wsdl:input message="impl:getAvailabilityRequest" name="getAvailabilityRequest">
 
        </wsdl:input>
 
          <wsdl:output message="impl:getAvailabilityResponse" name="getAvailabilityResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="addToCart">
-
-         <wsdl:input message="impl:addToCartRequest" name="addToCartRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:addToCartResponse" name="addToCartResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-
-      <wsdl:operation name="addToCart">
-
-         <wsdl:input message="impl:addToCartRequest" name="addToCartRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:addToCartResponse" name="addToCartResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getCars">
-
-         <wsdl:input message="impl:getCarsRequest" name="getCarsRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getCarsResponse" name="getCarsResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="addAccount">
-
-         <wsdl:input message="impl:addAccountRequest" name="addAccountRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:addAccountResponse" name="addAccountResponse">
 
        </wsdl:output>
 
@@ -428,6 +349,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getPriceResponse" name="getPriceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayBank">
+
+         <wsdl:input message="impl:displayBankRequest" name="displayBankRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayBankResponse" name="displayBankResponse">
 
        </wsdl:output>
 
@@ -453,6 +386,29 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
          <wsdl:output message="impl:addCarResponse" name="addCarResponse">
 
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToCart">
+
+         <wsdl:input message="impl:addToCartRequest" name="addToCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addToCartResponse" name="addToCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCars">
+
+         <wsdl:input message="impl:getCarsRequest" name="getCarsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCarsResponse" name="getCarsResponse">
 
        </wsdl:output>
 
@@ -464,17 +420,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="getAvailability">
+      <wsdl:operation name="addAccount">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getAvailabilityRequest">
+         <wsdl:input name="addAccountRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getAvailabilityResponse">
+         <wsdl:output name="addAccountResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -500,17 +456,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="displayBank">
+      <wsdl:operation name="getAmountAccount">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="displayBankRequest">
+         <wsdl:input name="getAmountAccountRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="displayBankResponse">
+         <wsdl:output name="getAmountAccountResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -518,8 +474,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getCars">
-
+      <wsdl:operation name="getAvailability">
 
          <wsdlsoap:operation soapAction=""/>
 
@@ -530,84 +485,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getAvailabilityResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="addToCart">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="addToCartRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="addToCartResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-
-      <wsdl:operation name="addAccount">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="addAccountRequest">
-
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="addAccountResponse">
-
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAmountAccount">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getAmountAccountRequest">
-
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-
-         <wsdl:output name="getCarsResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="addAccount">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="addAccountRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="addAccountResponse">
-
 
             <wsdlsoap:body use="literal"/>
 
@@ -633,6 +510,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="displayBank">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayBankRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayBankResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="buy">
 
          <wsdlsoap:operation soapAction=""/>
@@ -651,20 +546,53 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-
       <wsdl:operation name="addCar">
 
          <wsdlsoap:operation soapAction=""/>
 
-
+         <wsdl:input name="addCarRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-
          <wsdl:output name="addCarResponse">
 
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToCart">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addToCartRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addToCartResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCars">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCarsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCarsResponse">
 
             <wsdlsoap:body use="literal"/>
 

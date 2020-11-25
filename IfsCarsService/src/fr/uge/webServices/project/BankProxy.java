@@ -56,10 +56,10 @@ public class BankProxy implements fr.uge.webServices.project.Bank {
     return bank.addAccount(id, currency);
   }
   
-  public void depositOf(long id, double amount) throws java.rmi.RemoteException{
+  public void payVehicle(long id, double amountEUR) throws java.rmi.RemoteException{
     if (bank == null)
       _initBankProxy();
-    bank.depositOf(id, amount);
+    bank.payVehicle(id, amountEUR);
   }
   
   public boolean checkAccount(long id) throws java.rmi.RemoteException{
@@ -68,10 +68,10 @@ public class BankProxy implements fr.uge.webServices.project.Bank {
     return bank.checkAccount(id);
   }
   
-  public void payVehicle(long id, double amountEUR) throws java.rmi.RemoteException{
+  public void depositOf(long id, double amount) throws java.rmi.RemoteException{
     if (bank == null)
       _initBankProxy();
-    bank.payVehicle(id, amountEUR);
+    bank.depositOf(id, amount);
   }
   
   public double getAmountAccount(long id) throws java.rmi.RemoteException{

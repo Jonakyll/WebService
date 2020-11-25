@@ -44,10 +44,10 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage;
   }
   
-  public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getAvailability(car);
+    return garage.addAccount(id, currency, amount);
   }
   
   public boolean checkAccount(long id) throws java.rmi.RemoteException{
@@ -56,30 +56,16 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage.checkAccount(id);
   }
   
-  public void displayBank() throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    garage.displayBank();
-  }
-  
-  public void addToCart() throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    garage.addToCart();
-  }
-  
-
-  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.addAccount(id, currency, amount);
-  }
-  
   public double getAmountAccount(long id) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     return garage.getAmountAccount(id);
-
+  }
+  
+  public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getAvailability(car);
   }
   
   public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -88,18 +74,34 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage.getPrice(car);
   }
   
+  public void displayBank() throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    garage.displayBank();
+  }
+  
   public void buy() throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     garage.buy();
   }
   
-
   public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     garage.addCar(car);
-
+  }
+  
+  public void addToCart() throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    garage.addToCart();
+  }
+  
+  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getCars();
   }
   
   

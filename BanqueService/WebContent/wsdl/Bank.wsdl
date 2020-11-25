@@ -25,15 +25,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="depositOf">
+   <element name="payVehicle">
     <complexType>
      <sequence>
       <element name="id" type="xsd:long"/>
-      <element name="amount" type="xsd:double"/>
+      <element name="amountEUR" type="xsd:double"/>
      </sequence>
     </complexType>
    </element>
-   <element name="depositOfResponse">
+   <element name="payVehicleResponse">
     <complexType/>
    </element>
    <element name="checkAccount">
@@ -50,15 +50,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="payVehicle">
+   <element name="depositOf">
     <complexType>
      <sequence>
       <element name="id" type="xsd:long"/>
-      <element name="amountEUR" type="xsd:double"/>
+      <element name="amount" type="xsd:double"/>
      </sequence>
     </complexType>
    </element>
-   <element name="payVehicleResponse">
+   <element name="depositOfResponse">
     <complexType/>
    </element>
    <element name="getAmountAccount">
@@ -118,14 +118,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="depositOfResponse">
-
-      <wsdl:part element="impl:depositOfResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="checkAccountResponse">
 
       <wsdl:part element="impl:checkAccountResponse" name="parameters">
@@ -134,9 +126,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="checkAccountRequest">
+   <wsdl:message name="depositOfResponse">
 
-      <wsdl:part element="impl:checkAccount" name="parameters">
+      <wsdl:part element="impl:depositOfResponse" name="parameters">
 
       </wsdl:part>
 
@@ -145,6 +137,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="payVehicleRequest">
 
       <wsdl:part element="impl:payVehicle" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkAccountRequest">
+
+      <wsdl:part element="impl:checkAccount" name="parameters">
 
       </wsdl:part>
 
@@ -200,13 +200,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="depositOf">
+      <wsdl:operation name="payVehicle">
 
-         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
+         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
+         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
 
        </wsdl:output>
 
@@ -224,13 +224,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
+      <wsdl:operation name="depositOf">
 
-         <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
+         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:payVehicleResponse" name="payVehicleResponse">
+         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
 
        </wsdl:output>
 
@@ -290,17 +290,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="depositOf">
+      <wsdl:operation name="payVehicle">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="depositOfRequest">
+         <wsdl:input name="payVehicleRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="depositOfResponse">
+         <wsdl:output name="payVehicleResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -326,17 +326,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="payVehicle">
+      <wsdl:operation name="depositOf">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="payVehicleRequest">
+         <wsdl:input name="depositOfRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="payVehicleResponse">
+         <wsdl:output name="depositOfResponse">
 
             <wsdlsoap:body use="literal"/>
 
