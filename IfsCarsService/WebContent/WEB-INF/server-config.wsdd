@@ -32,22 +32,28 @@
   <ns2:operation name="getAvailability" qname="ns1:getAvailability" returnQName="ns1:getAvailabilityReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:car" type="ns1:Car"/>
   </ns2:operation>
-  <ns1:operation name="getPrice" qname="ns2:getPrice" returnQName="ns2:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns2="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns2:car" type="ns2:Car"/>
+  <ns1:operation name="checkAccount" qname="ns2:checkAccount" returnQName="ns2:checkAccountReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="addToCart" qname="ns3:addToCart" soapAction="" xmlns:ns3="http://project.webServices.uge.fr"/>
+  <ns1:operation name="displayBank" qname="ns3:displayBank" soapAction="" xmlns:ns3="http://project.webServices.uge.fr"/>
   <ns1:operation name="getCars" qname="ns4:getCars" returnQName="ns4:getCarsReturn" returnType="ns4:Car" soapAction="" xmlns:ns4="http://project.webServices.uge.fr"/>
-  <ns1:operation name="addAccount" qname="ns5:addAccount" returnQName="ns5:addAccountReturn" returnType="xsd:int" soapAction="" xmlns:ns5="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:id" type="xsd:long"/>
-   <ns1:parameter qname="ns5:currency" type="xsd:string"/>
-   <ns1:parameter qname="ns5:amount" type="xsd:int"/>
+  <ns1:operation name="addToCart" qname="ns5:addToCart" soapAction="" xmlns:ns5="http://project.webServices.uge.fr"/>
+  <ns1:operation name="addAccount" qname="ns6:addAccount" returnQName="ns6:addAccountReturn" returnType="xsd:int" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:id" type="xsd:long"/>
+   <ns1:parameter qname="ns6:currency" type="xsd:string"/>
+   <ns1:parameter qname="ns6:amount" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="addCar" qname="ns6:addCar" soapAction="" xmlns:ns6="http://project.webServices.uge.fr">
-   <ns1:parameter qname="ns6:car" type="ns6:Car"/>
+  <ns1:operation name="getAmountAccount" qname="ns7:getAmountAccount" returnQName="ns7:getAmountAccountReturn" returnType="xsd:double" soapAction="" xmlns:ns7="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="buy" qname="ns7:buy" soapAction="" xmlns:ns7="http://project.webServices.uge.fr"/>
-  <ns1:operation name="displayBankString" qname="ns8:displayBankString" returnQName="ns8:displayBankStringReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:parameter name="allowedMethods" value="getAvailability displayBankString addCar buy getCars addToCart addAccount getPrice"/>
+  <ns1:operation name="getPrice" qname="ns8:getPrice" returnQName="ns8:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:car" type="ns8:Car"/>
+  </ns1:operation>
+  <ns1:operation name="buy" qname="ns9:buy" soapAction="" xmlns:ns9="http://project.webServices.uge.fr"/>
+  <ns1:operation name="addCar" qname="ns10:addCar" soapAction="" xmlns:ns10="http://project.webServices.uge.fr">
+   <ns1:parameter qname="ns10:car" type="ns10:Car"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getAmountAccount getAvailability checkAccount addCar buy displayBank getCars addToCart addAccount getPrice"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Garage"/>
   <ns1:parameter name="className" value="fr.uge.webServices.project.Garage"/>

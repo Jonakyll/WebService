@@ -19,7 +19,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="addAccountResponse">
-    <complexType/>
+    <complexType>
+     <sequence>
+      <element name="addAccountReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="depositOf">
     <complexType>
@@ -32,6 +36,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="depositOfResponse">
     <complexType/>
    </element>
+   <element name="checkAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="checkAccountReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="payVehicle">
     <complexType>
      <sequence>
@@ -43,13 +61,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="payVehicleResponse">
     <complexType/>
    </element>
-   <element name="stringDisplay">
-    <complexType/>
-   </element>
-   <element name="stringDisplayResponse">
+   <element name="getAmountAccount">
     <complexType>
      <sequence>
-      <element name="stringDisplayReturn" type="xsd:string"/>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAmountAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="getAmountAccountReturn" type="xsd:double"/>
      </sequence>
     </complexType>
    </element>
@@ -80,14 +102,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="stringDisplayResponse">
-
-      <wsdl:part element="impl:stringDisplayResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="addAccountResponse">
 
       <wsdl:part element="impl:addAccountResponse" name="parameters">
@@ -112,9 +126,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="stringDisplayRequest">
+   <wsdl:message name="checkAccountResponse">
 
-      <wsdl:part element="impl:stringDisplay" name="parameters">
+      <wsdl:part element="impl:checkAccountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkAccountRequest">
+
+      <wsdl:part element="impl:checkAccount" name="parameters">
 
       </wsdl:part>
 
@@ -128,9 +150,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="getAmountAccountResponse">
+
+      <wsdl:part element="impl:getAmountAccountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="displayRequest">
 
       <wsdl:part element="impl:display" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAmountAccountRequest">
+
+      <wsdl:part element="impl:getAmountAccount" name="parameters">
 
       </wsdl:part>
 
@@ -174,6 +212,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="checkAccount">
+
+         <wsdl:input message="impl:checkAccountRequest" name="checkAccountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkAccountResponse" name="checkAccountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="payVehicle">
 
          <wsdl:input message="impl:payVehicleRequest" name="payVehicleRequest">
@@ -186,13 +236,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="stringDisplay">
+      <wsdl:operation name="getAmountAccount">
 
-         <wsdl:input message="impl:stringDisplayRequest" name="stringDisplayRequest">
+         <wsdl:input message="impl:getAmountAccountRequest" name="getAmountAccountRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:stringDisplayResponse" name="stringDisplayResponse">
+         <wsdl:output message="impl:getAmountAccountResponse" name="getAmountAccountResponse">
 
        </wsdl:output>
 
@@ -258,6 +308,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="checkAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="payVehicle">
 
          <wsdlsoap:operation soapAction=""/>
@@ -276,17 +344,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="stringDisplay">
+      <wsdl:operation name="getAmountAccount">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="stringDisplayRequest">
+         <wsdl:input name="getAmountAccountRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="stringDisplayResponse">
+         <wsdl:output name="getAmountAccountResponse">
 
             <wsdlsoap:body use="literal"/>
 
