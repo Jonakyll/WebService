@@ -29,6 +29,7 @@
       <operation name="displayBank" qname="operNS:displayBank" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
       </operation>
       <operation name="getCars" qname="operNS:getCars" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getCarsReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:Car" xmlns:rtns="http://project.webServices.uge.fr" soapAction="" >
+
       </operation>
       <operation name="addToCart" qname="operNS:addToCart" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
       </operation>
@@ -39,6 +40,7 @@
       </operation>
       <operation name="getAmountAccount" qname="operNS:getAmountAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAmountAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+
       </operation>
       <operation name="getPrice" qname="operNS:getPrice" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getPriceReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:car" xmlns:pns="http://project.webServices.uge.fr" type="tns:Car" xmlns:tns="http://project.webServices.uge.fr"/>

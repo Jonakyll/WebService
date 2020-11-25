@@ -19,6 +19,7 @@ public class Car extends UnicastRemoteObject implements ICar {
 
 	private Long nextTenant;
 	private Long price;
+	private String model;
 
 	public Car() throws RemoteException {
 
@@ -90,6 +91,16 @@ public class Car extends UnicastRemoteObject implements ICar {
 	@Override
 	public void setNextTenantId(Long customerId) throws RemoteException {
 		this.nextTenant = customerId;
+	}
+
+	@Override
+	public String getModel() throws RemoteException {
+		return model;
+	}
+
+	@Override
+	public void setModel(String model) throws RemoteException {
+		this.model = model;
 	}
 
 }

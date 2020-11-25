@@ -27,6 +27,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </sequence>
    </complexType>
    <element name="getAvailabilityResponse">
+
+    <complexType>
+     <sequence>
+      <element name="getAvailabilityReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPrice">
+
     <complexType>
      <sequence>
       <element name="getAvailabilityReturn" type="xsd:boolean"/>
@@ -40,17 +49,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="checkAccountResponse">
-    <complexType>
-     <sequence>
-      <element name="checkAccountReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="displayBank">
+   <element name="addToCart">
     <complexType/>
    </element>
-   <element name="displayBankResponse">
+   <element name="addToCartResponse">
     <complexType/>
    </element>
    <element name="getCars">
@@ -63,10 +65,39 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="addToCart">
+   <element name="addAccount">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="currency" type="xsd:string"/>
+      <element name="amount" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addAccountResponse">
+    <complexType>
+     <sequence>
+      <element name="addAccountReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCars">
     <complexType/>
    </element>
-   <element name="addToCartResponse">
+   <element name="getCarsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getCarsReturn" type="impl:Car"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCarResponse">
+    <complexType/>
+   </element>
+   <element name="buy">
+    <complexType/>
+   </element>
+   <element name="buyResponse">
     <complexType/>
    </element>
    <element name="addAccount">
@@ -235,7 +266,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       </wsdl:part>
 
    </wsdl:message>
-
    <wsdl:message name="buyResponse">
 
       <wsdl:part element="impl:buyResponse" name="parameters">
@@ -332,11 +362,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:operation name="getCars">
 
-         <wsdl:input message="impl:getCarsRequest" name="getCarsRequest">
+         <wsdl:input message="impl:getAvailabilityRequest" name="getAvailabilityRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getCarsResponse" name="getCarsResponse">
+         <wsdl:output message="impl:getAvailabilityResponse" name="getAvailabilityResponse">
 
        </wsdl:output>
 
@@ -354,6 +384,31 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+
+      <wsdl:operation name="addToCart">
+
+         <wsdl:input message="impl:addToCartRequest" name="addToCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addToCartResponse" name="addToCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCars">
+
+         <wsdl:input message="impl:getCarsRequest" name="getCarsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCarsResponse" name="getCarsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="addAccount">
 
          <wsdl:input message="impl:addAccountRequest" name="addAccountRequest">
@@ -361,18 +416,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:addAccountResponse" name="addAccountResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAmountAccount">
-
-         <wsdl:input message="impl:getAmountAccountRequest" name="getAmountAccountRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getAmountAccountResponse" name="getAmountAccountResponse">
 
        </wsdl:output>
 
@@ -409,6 +452,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:addCarResponse" name="addCarResponse">
+
 
        </wsdl:output>
 
@@ -476,15 +520,16 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:operation name="getCars">
 
+
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getCarsRequest">
+         <wsdl:input name="getAvailabilityRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getCarsResponse">
+         <wsdl:output name="getAvailabilityResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -510,17 +555,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+
       <wsdl:operation name="addAccount">
 
          <wsdlsoap:operation soapAction=""/>
 
          <wsdl:input name="addAccountRequest">
 
+
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
          <wsdl:output name="addAccountResponse">
+
 
             <wsdlsoap:body use="literal"/>
 
@@ -534,11 +582,32 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
          <wsdl:input name="getAmountAccountRequest">
 
+
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getAmountAccountResponse">
+
+         <wsdl:output name="getCarsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addAccountResponse">
+
 
             <wsdlsoap:body use="literal"/>
 
@@ -582,17 +651,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+
       <wsdl:operation name="addCar">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="addCarRequest">
+
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
+
          <wsdl:output name="addCarResponse">
+
 
             <wsdlsoap:body use="literal"/>
 

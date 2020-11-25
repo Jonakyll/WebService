@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -61,8 +61,9 @@
   <ns1:parameter name="schemaQualified" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://project.webServices.uge.fr"/>
   <ns1:parameter name="wsdlServiceElement" value="GarageService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:Car" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.webServices.project.Car" xmlns:ns11="http://project.webServices.uge.fr"/>
-  <ns1:arrayMapping innerType="xsd:long" languageSpecificType="java:long[]" qname="ns12:ArrayOf_xsd_long" xmlns:ns12="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="scoper" value="session"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:Car" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.webServices.project.Car" xmlns:ns9="http://project.webServices.uge.fr"/>
+  <ns1:arrayMapping innerType="xsd:long" languageSpecificType="java:long[]" qname="ns10:ArrayOf_xsd_long" xmlns:ns10="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>

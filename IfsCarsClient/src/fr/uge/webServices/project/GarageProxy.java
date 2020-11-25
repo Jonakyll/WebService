@@ -62,18 +62,13 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     garage.displayBank();
   }
   
-  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.getCars();
-  }
-  
   public void addToCart() throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     garage.addToCart();
   }
   
+
   public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
@@ -84,6 +79,7 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     if (garage == null)
       _initGarageProxy();
     return garage.getAmountAccount(id);
+
   }
   
   public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -98,10 +94,12 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     garage.buy();
   }
   
+
   public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     garage.addCar(car);
+
   }
   
   

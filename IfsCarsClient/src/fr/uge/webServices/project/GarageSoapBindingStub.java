@@ -302,6 +302,7 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
 }
     }
 
+
     public void displayBank() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -315,6 +316,7 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
         _call.setOperationName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "displayBank"));
+
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -377,14 +379,22 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
         _call.setOperationName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "addToCart"));
 
+
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(id), currency, new java.lang.Integer(amount)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
         }
-        extractAttachments(_call);
+        else {
+            extractAttachments(_call);
+            try {
+                return ((java.lang.Integer) _resp).intValue();
+            } catch (java.lang.Exception _exception) {
+                return ((java.lang.Integer) org.apache.axis.utils.JavaUtils.convert(_resp, int.class)).intValue();
+            }
+        }
   } catch (org.apache.axis.AxisFault axisFaultException) {
   throw axisFaultException;
 }
@@ -424,6 +434,7 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
 }
     }
 
+
     public double getAmountAccount(long id) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -437,6 +448,7 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
         _call.setOperationName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "getAmountAccount"));
+
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -472,9 +484,10 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
         _call.setOperationName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "getPrice"));
 
+
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {car});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -485,6 +498,7 @@ public class GarageSoapBindingStub extends org.apache.axis.client.Stub implement
                 return ((java.lang.Long) _resp).longValue();
             } catch (java.lang.Exception _exception) {
                 return ((java.lang.Long) org.apache.axis.utils.JavaUtils.convert(_resp, long.class)).longValue();
+
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
