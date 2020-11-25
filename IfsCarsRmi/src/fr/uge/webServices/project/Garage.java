@@ -9,11 +9,13 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import fr.uge.webServices.common.ICar;
+import fr.uge.webServices.common.ICustomer;
 import fr.uge.webServices.common.IGarage;
 
 public class Garage extends UnicastRemoteObject implements IGarage {
 
 	private Map<Long, ICar> cars = new HashMap<Long, ICar>();
+	private Map<Long, ICustomer> customers = new HashMap<Long, ICustomer>();
 
 	public Garage() throws RemoteException {
 	}
@@ -22,6 +24,8 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	public boolean addCar(Long customerId, ICar car) throws RemoteException {
 		Objects.requireNonNull(car);
 		ICar c = cars.get(car.getId());
+		ICustomer customer = customers.get(customerId);
+		customer.notify("RENT CAR");
 
 		if (c != null) {
 			if (c.getAvailability() && (c.getTenants().isEmpty() || customerId.equals(c.getNextTenantId()))) {
@@ -47,6 +51,8 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	public void removeCar(Long customerId, ICar car) throws RemoteException {
 		Objects.requireNonNull(car);
 		ICar c = cars.get(car.getId());
+		ICustomer customer = customers.get(customerId);
+		customer.notify("RETURN CAR");
 
 		if (c != null) {
 
@@ -76,9 +82,11 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public void rateCar(ICar car, float rating) throws RemoteException {
+	public void rateCar(Long customerId, ICar car, float rating) throws RemoteException {
 		Objects.requireNonNull(car);
 		ICar c = cars.get(car.getId());
+		ICustomer customer = customers.get(customerId);
+		customer.notify("RATE CAR");
 
 		if (c != null) {
 			c.setRating(rating);
@@ -95,6 +103,12 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 			}
 			return false;
 		}).collect(Collectors.toList());
+	}
+
+	@Override
+	public void addCustomer(ICustomer customer) throws RemoteException {
+		Objects.requireNonNull(customer);
+		customers.put(customer.getId(), customer);
 	}
 
 }
