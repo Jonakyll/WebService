@@ -9,8 +9,9 @@ package fr.uge.webServices.project;
 
 public interface Bank extends java.rmi.Remote {
     public void display() throws java.rmi.RemoteException;
-    public void addAccount(long id, java.lang.String currency) throws java.rmi.RemoteException;
+    public int addAccount(long id, java.lang.String currency) throws java.rmi.RemoteException;
     public void depositOf(long id, double amount) throws java.rmi.RemoteException;
+    public boolean checkAccount(long id) throws java.rmi.RemoteException;
     public void payVehicle(long id, double amountEUR) throws java.rmi.RemoteException;
-    public java.lang.String stringDisplay() throws java.rmi.RemoteException;
+    public double getAmountAccount(long id) throws java.rmi.RemoteException;
 }

@@ -25,10 +25,15 @@ BIENVENUE DANS L'ESPACE DE PAIEMENT
 	}
 %>
 <%
-	if (request.getSession().getAttribute("account")==null){
+	if (request.getSession().getAttribute("verif_account_id")==null){
 %>
 	<%@ include file="account.jsp" %>
 <%
+	}else{
+		out.println("<h3>Votre compte:</h3>");
+		out.println("Numéro: "+ (Long) request.getSession().getAttribute("verif_account_id")+"\n");
+		out.println("Devise du compte: " + request.getSession().getAttribute("verif_currency")+"\n");
+		out.println("Montant: "+(Double) request.getSession().getAttribute("amount_account")+"\n");
 	}
 %>
 

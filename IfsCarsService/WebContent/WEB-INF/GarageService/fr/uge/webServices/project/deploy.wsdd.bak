@@ -20,24 +20,35 @@
       <parameter name="className" value="fr.uge.webServices.project.GarageSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="Garage"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getAvailability" qname="operNS:getAvailability" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAvailabilityReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:car" xmlns:pns="http://project.webServices.uge.fr" type="tns:Car" xmlns:tns="http://project.webServices.uge.fr"/>
+      </operation>
+      <operation name="checkAccount" qname="operNS:checkAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:checkAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="displayBank" qname="operNS:displayBank" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
+      </operation>
       <operation name="getCars" qname="operNS:getCars" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getCarsReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:Car" xmlns:rtns="http://project.webServices.uge.fr" soapAction="" >
+      </operation>
+      <operation name="addToCart" qname="operNS:addToCart" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
+      </operation>
+      <operation name="addAccount" qname="operNS:addAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:addAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:currency" xmlns:pns="http://project.webServices.uge.fr" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:amount" xmlns:pns="http://project.webServices.uge.fr" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAmountAccount" qname="operNS:getAmountAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAmountAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="getPrice" qname="operNS:getPrice" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getPriceReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:car" xmlns:pns="http://project.webServices.uge.fr" type="tns:Car" xmlns:tns="http://project.webServices.uge.fr"/>
-      </operation>
-      <operation name="displayBankString" qname="operNS:displayBankString" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:displayBankStringReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
       <operation name="buy" qname="operNS:buy" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
       </operation>
       <operation name="addCar" qname="operNS:addCar" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
         <parameter qname="pns:car" xmlns:pns="http://project.webServices.uge.fr" type="tns:Car" xmlns:tns="http://project.webServices.uge.fr"/>
       </operation>
-      <operation name="addToCart" qname="operNS:addToCart" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
-      </operation>
-      <operation name="getAvailability" qname="operNS:getAvailability" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAvailabilityReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:car" xmlns:pns="http://project.webServices.uge.fr" type="tns:Car" xmlns:tns="http://project.webServices.uge.fr"/>
-      </operation>
-      <parameter name="allowedMethods" value="getAvailability displayBankString addCar buy getCars addToCart getPrice"/>
+      <parameter name="allowedMethods" value="getAmountAccount getAvailability checkAccount addCar buy displayBank getCars addToCart addAccount getPrice"/>
 
       <typeMapping
         xmlns:ns="http://project.webServices.uge.fr"

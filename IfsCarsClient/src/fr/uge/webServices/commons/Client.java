@@ -66,6 +66,14 @@ public class Client {
 	public List<Car> getCart() {
 		return cart;
 	}
+
+
+	public boolean checkAccount(long id) throws RemoteException {
+		return garage.checkAccount(id);	
+	}
 	
+	public double getAmountAccount(long id) throws RemoteException {
+		return garage.getAmountAccount(id);
+	}
 	
 }

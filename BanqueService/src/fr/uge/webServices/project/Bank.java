@@ -40,7 +40,6 @@ public class Bank {
 		}
 		int oldSize = accountMap.size();
 		accountMap.put(id, new Account(id, currency));
-		System.out.println("compte "+id+" ajouté Taille de la map: "+accountMap.size());
 		return accountMap.size()-oldSize;
 	}
 	
@@ -90,14 +89,17 @@ public class Bank {
 		}
 	}
 	
-	public String stringDisplay() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("AFFICHAGE DE LA BANQUE:\n");
-		for (Account account : accountMap.values()) {
-			builder.append(account);
+	public boolean checkAccount(long id) {
+		if (accountMap.containsKey(id)){
+			return true;
 		}
-		return builder.toString();
+		return false;
 	}
+	
+	public double getAmountAccount(long id) {
+		return accountMap.get(id).getValue();
+	}
+
 	
 	
 	

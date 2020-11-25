@@ -41,8 +41,8 @@ public class Garage {
 	}
 	
 	
-	public String displayBankString() throws RemoteException {
-		return bank.stringDisplay();
+	public void displayBank() throws RemoteException {
+		bank.display();
 	}
 
 	public Long getPrice(Car car) {
@@ -88,6 +88,14 @@ public class Garage {
 			cars[i] = res.get(i);
 		}
 		return cars;
+	}
+	
+	public boolean checkAccount(long id) throws RemoteException {
+		return bank.checkAccount(id);
+	}
+	
+	public double getAmountAccount(long id) throws RemoteException {
+		return bank.getAmountAccount(id);
 	}
 
 }

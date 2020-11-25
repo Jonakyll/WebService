@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.uge.webServices.commons.Client;
+
 /**
  * Servlet implementation class PaymentServlet
  */
@@ -35,7 +37,14 @@ public class PaymentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		if(request.getParameter("haveAccount")!=null) {
+			long id_test =  Long.valueOf(request.getParameter("account_id"));
+			Client client = (Client) request.getSession().getAttribute("client");
+			if (client.checkAccount(id_test)) {
+				request.getSession().setAttribute("verif_account_id", id_test);
+				request.getSession().setAttribute("amount_account", client.getAmountAccount(id_test));
+			}
+		}
 		doGet(request, response);
 	}
 

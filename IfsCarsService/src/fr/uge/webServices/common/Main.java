@@ -16,7 +16,7 @@ public class Main {
 //		((BankSoapBindingStub) bank).setMaintainSession(true);
 //		bank.display();
 		Garage garage = new Garage();
-		System.out.println(garage.displayBankString());
+		garage.displayBank();
 	}
 
 }
