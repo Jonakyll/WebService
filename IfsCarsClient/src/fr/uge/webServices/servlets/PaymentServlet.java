@@ -23,7 +23,6 @@ public class PaymentServlet extends HttpServlet {
      */
     public PaymentServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
