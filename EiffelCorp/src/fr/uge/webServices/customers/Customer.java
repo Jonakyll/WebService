@@ -19,20 +19,20 @@ public class Customer extends UnicastRemoteObject implements ICustomer {
 
 	}
 
-	public void rentCar(IGarage garage, String model) throws RemoteException {
+	public void rentCar(IGarage garage, Long carId) throws RemoteException {
 		Objects.requireNonNull(garage);
-		Objects.requireNonNull(model);
+		Objects.requireNonNull(carId);
 		
-		ICar car = garage.addCar(id, model);
+		ICar car = garage.addCar(id, carId);
 		if (car != null) {
 			cars.add(car);
 		}
 	}
 
-	public void returnCar(IGarage garage, String model) throws RemoteException {
+	public void returnCar(IGarage garage, Long carId) throws RemoteException {
 		Objects.requireNonNull(garage);
-		Objects.requireNonNull(model);
-		garage.removeCar(id, model);
+		Objects.requireNonNull(carId);
+		garage.removeCar(id, carId);
 	}
 
 	public Long getId() {
@@ -51,10 +51,10 @@ public class Customer extends UnicastRemoteObject implements ICustomer {
 		this.cars = cars;
 	}
 
-	public void rateCar(IGarage garage, String model, float rating) throws RemoteException {
+	public void rateCar(IGarage garage, Long carId, float rating) throws RemoteException {
 		Objects.requireNonNull(garage);
-		Objects.requireNonNull(model);
-		garage.rateCar(id, model, rating);
+		Objects.requireNonNull(carId);
+		garage.rateCar(id, carId, rating);
 	}
 
 	@Override

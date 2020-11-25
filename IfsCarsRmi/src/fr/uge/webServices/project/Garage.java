@@ -21,48 +21,44 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public ICar addCar(Long customerId, String model) throws RemoteException {
-		Objects.requireNonNull(model);
+	public ICar addCar(Long customerId, Long carId) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-		for (ICar car : cars.values()) {
+		ICar car = cars.get(carId);
 
-			if (car.getModel().equals(model)) {
-
-				if (car.getAvailability() && (car.getTenants().isEmpty() || customerId.equals(car.getNextTenantId()))) {
+		if (car != null) {
+			if (car.getAvailability() && (car.getTenants().isEmpty() || customerId.equals(car.getNextTenantId()))) {
 
 //					make the customer rent the car
-					car.setAvailability(false);
-					car.setNextTenantId(null);
+				car.setAvailability(false);
+				car.setNextTenantId(null);
 
-					return car;
-				} else {
+				return car;
+			} else {
 
 //					put the customer into the waiting list
-					if (!car.getTenants().contains(customerId)) {
-						car.addTenant(customerId);
-					}
-					return null;
+				if (!car.getTenants().contains(customerId)) {
+					car.addTenant(customerId);
 				}
+				return null;
 			}
 		}
 		return null;
 	}
 
 	@Override
-	public void removeCar(Long customerId, String model) throws RemoteException {
-		Objects.requireNonNull(model);
+	public void removeCar(Long customerId, Long carId) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-		for (ICar car : cars.values()) {
+		ICar car = cars.get(carId);
 
-			if (car.getModel().equals(model)) {
+		if (car != null) {
+			car.removeTenant();
 
-				car.removeTenant();
+			// ask to the client to rate the car
+			// ask to the next client if he wants to rent?
 
-				// ask to the client to rate the car
-				// ask to the next client if he wants to rent?
-
-				car.setAvailability(true);
-			}
+			car.setAvailability(true);
 		}
 	}
 
@@ -82,13 +78,12 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public void rateCar(Long customerId, String model, float rating) throws RemoteException {
-		Objects.requireNonNull(model);
-		for (ICar car : cars.values()) {
+	public void rateCar(Long customerId, Long carId, float rating) throws RemoteException {
+		Objects.requireNonNull(carId);
 
-			if (car.getModel().equals(model)) {
-				car.setRating(rating);
-			}
+		ICar car = cars.get(carId);
+		if (car != null) {
+			car.setRating(rating);
 		}
 	}
 
