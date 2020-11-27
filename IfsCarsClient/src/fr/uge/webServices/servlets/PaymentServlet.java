@@ -41,8 +41,32 @@ public class PaymentServlet extends HttpServlet {
 			Client client = (Client) request.getSession().getAttribute("client");
 			if (client.checkAccount(id_test)) {
 				request.getSession().setAttribute("verif_account_id", id_test);
-				request.getSession().setAttribute("amount_account", client.getAmountAccount(id_test));
+				request.getSession().setAttribute("amount_account", client.getAmountAccount());
+				request.getSession().setAttribute("client", client);
 			}
+		}
+		else if(request.getParameter("createAccount")!=null) {
+			Client client = (Client) request.getSession().getAttribute("client");
+			String currency =  request.getParameter("currency");
+			double amount = Double.valueOf(request.getParameter("deposit"));
+			System.out.println("avant: "+client.bankSize());
+			if (client.createAccount(currency)) {
+				System.out.println(client.getAccount_id());
+				System.out.println(client.bankSize());
+				client.depositOf(amount);
+			}
+		}
+		else if(request.getParameter("disconnect")!=null) {
+			Client client = (Client) request.getSession().getAttribute("client");
+			client.setAccount_id(-1);
+			request.getSession().setAttribute("client", client);
+		}
+		else if(request.getParameter("makeADeposit")!=null) {
+			System.out.println("ON FAIT UN DEPOT");
+			Client client = (Client) request.getSession().getAttribute("client");
+			double amount = Double.valueOf(request.getParameter("deposit"));
+			client.depositOf(amount);
+			request.getSession().setAttribute("client", client);
 		}
 		doGet(request, response);
 	}

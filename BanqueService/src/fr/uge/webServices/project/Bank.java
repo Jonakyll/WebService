@@ -21,14 +21,23 @@ public class Bank {
 	
 	private void initBank() throws RemoteException {
 		this.addAccount(1L, "USD");
+		this.depositOf(1L, 10000000);
 		this.addAccount(2L, "JPY");
+		this.depositOf(2L, 10000);
 		this.addAccount(3L, "EUR");
+		this.depositOf(3L, 10000);
 		this.addAccount(4L, "USD");
+		this.depositOf(4L, 10000);
 		this.addAccount(5L, "USD");
+		this.depositOf(5L, 10000);
 		this.addAccount(6L, "USD");
+		this.depositOf(6L, 10000);
 		this.addAccount(7L, "USD");
+		this.depositOf(7L, 10000);
 		this.addAccount(8L, "USD");
+		this.depositOf(8L, 10000);
 		this.addAccount(9L, "USD");
+		this.depositOf(9L, 10000);
 		
 	}
 	
@@ -60,18 +69,18 @@ public class Bank {
 		return -1;
 	}
 	
-	public void payVehicle(Long id, double amountEUR) throws RemoteException {
+	public boolean pay(Long id, double amountEUR) throws RemoteException {
 		if (amountEUR<0) {
 			throw new IllegalArgumentException();
 		}
 		double amountToPay = isAbleToPay(id, amountEUR);
 		if (amountToPay==-1) {
 			System.out.println("Achat non effectué, compte pas assez approvisionné");
-			return ;
+			return false;
 		}
 		accountMap.get(id).moneyBackOf(amountToPay);
-		System.out.println("Vehicle acheté");
-		return;
+		System.out.println("Achat effectué");
+		return true;
 	}
 	
 	public void depositOf(Long id, double amount) {
@@ -98,6 +107,20 @@ public class Bank {
 	
 	public double getAmountAccount(long id) {
 		return accountMap.get(id).getValue();
+	}
+	
+	public double getAmountAccountEUR(long id) throws RemoteException {
+		Account account = accountMap.get(id);
+		return (double) soapServer.convert("", account.getCurrency(), "EUR", account.getValue(), 
+				false, ".", CurncsrvReturnRate.curncsrvReturnRateNumber, "", "");
+	}
+	
+	public String getCurrencyAccount(long id) {
+		return accountMap.get(id).getCurrency();
+	}
+	
+	public int getSize() {
+		return accountMap.size();
 	}
 
 	

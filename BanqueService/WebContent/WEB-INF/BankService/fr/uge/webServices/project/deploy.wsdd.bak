@@ -20,27 +20,35 @@
       <parameter name="className" value="fr.uge.webServices.project.BankSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="Bank"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getSize" qname="operNS:getSize" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getSizeReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
       <operation name="display" qname="operNS:display" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
       </operation>
       <operation name="addAccount" qname="operNS:addAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:addAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:currency" xmlns:pns="http://project.webServices.uge.fr" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="payVehicle" qname="operNS:payVehicle" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
+      <operation name="getAmountAccount" qname="operNS:getAmountAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAmountAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:amountEUR" xmlns:pns="http://project.webServices.uge.fr" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="checkAccount" qname="operNS:checkAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:checkAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getCurrencyAccount" qname="operNS:getCurrencyAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getCurrencyAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="depositOf" qname="operNS:depositOf" xmlns:operNS="http://project.webServices.uge.fr" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:amount" xmlns:pns="http://project.webServices.uge.fr" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="getAmountAccount" qname="operNS:getAmountAccount" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAmountAccountReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="getAmountAccountEUR" qname="operNS:getAmountAccountEUR" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:getAmountAccountEURReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="getAmountAccount checkAccount display addAccount payVehicle depositOf"/>
+      <operation name="pay" qname="operNS:pay" xmlns:operNS="http://project.webServices.uge.fr" returnQName="retNS:payReturn" xmlns:retNS="http://project.webServices.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://project.webServices.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:amountEUR" xmlns:pns="http://project.webServices.uge.fr" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAmountAccount getCurrencyAccount getSize checkAccount display getAmountAccountEUR pay addAccount depositOf"/>
 
   </service>
 </deployment>

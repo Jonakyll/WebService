@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 import fr.uge.webServices.common.ICar;
 import fr.uge.webServices.common.IGarage;
@@ -66,11 +67,32 @@ public class Garage {
 			return false;
 		}
 	}
-
-	public void addToCart() {
+	
+	public float getRating(Car car) {
+		Objects.requireNonNull(car);
+		Car c = cars.get(car.getId());
+		if (c != null) {
+			return c.getRating();
+		} else {
+			System.out.println("\tcar not found");
+			return -1;
+		}
 	}
 
-	public void buy() {
+
+	public boolean buy(long id_account, Car[] cart) throws RemoteException {
+		//FAURE UN TABLEAU DE CARS
+		double amount = 0;
+		for (Car car : cart) {
+			amount += car.getPrice();
+		}
+		if(bank.pay(id_account, amount)){
+			for (Car car : cart) {
+				this.cars.remove(car.getId());
+			}
+			return true;
+		}
+		return false;
 	}
 
 	public void addCar(Car car) {
@@ -97,5 +119,38 @@ public class Garage {
 	public double getAmountAccount(long id) throws RemoteException {
 		return bank.getAmountAccount(id);
 	}
+	
+	public  double getAmountAccountEUR(long id) throws RemoteException {
+		return bank.getAmountAccountEUR(id);
+	}
+	
+	public String getCurrencyAccount(long id) throws RemoteException {
+		return bank.getCurrencyAccount(id);
+	}
+	
+	public long createBankAccount(String currency) throws RemoteException {
+		long id_test = 0;
+		int test = 0;
+		do {
+			id_test = new Random().nextLong();
+			if (id_test<0) {
+				id_test = -id_test;
+			}
+			test = bank.addAccount(id_test, currency);
+			if (test == -1) {
+		    	  return -1;
+		     }
+		} while (test==0);
+		return id_test;
+	}
+	
+	public void depositOf(long account_id, double amount) throws RemoteException {
+		bank.depositOf(account_id, amount);
+	}
+	
+	public int bankSize() throws RemoteException {
+		return bank.getSize();
+	}
+	
 
 }

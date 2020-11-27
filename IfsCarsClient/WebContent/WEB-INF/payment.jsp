@@ -30,15 +30,15 @@
 	}
 %>
 <%
-	if (request.getSession().getAttribute("verif_account_id")==null){
+	if (client.getAccount_id()==-1){
 %>
 	<%@ include file="account.jsp" %>
 <%
 	}else{
 		out.println("<h3>Votre compte bancaire associé:</h3>");
-		out.println("<p>Numéro: "+ (Long) request.getSession().getAttribute("verif_account_id")+"</p>");
-		out.println("<p>Devise du compte: " + request.getSession().getAttribute("verif_currency")+"</p>");
-		out.println("<p>Montant: "+(Double) request.getSession().getAttribute("amount_account")+"</p>");
+		out.println("<p>Numéro: "+ client.getAccount_id()+"</p>");
+		out.println("<p>Devise du compte: " + client.getCurrencyAccount()+"</p>");
+		out.println("<p>Montant: "+ client.getAmountAccount() +" (soit "+client.getAmountAccountEUR() +" euros)</p>");
 %>
 	<p><label for="deposit">Faire un dépôt:</label>
 	<input type="number" value="0" name="deposit">
