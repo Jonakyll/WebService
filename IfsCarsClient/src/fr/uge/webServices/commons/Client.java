@@ -126,9 +126,16 @@ public class Client {
 	}
 	
 	public boolean buy() throws RemoteException {
+		System.out.println("on rentre dans buy");
 		Car[] cars = new Car[cart.size()];
-        cars = (Car[]) cart.toArray();
-		if (garage.buy(account_id, cars)) {
+		for (int i=0; i<cart.size();i++) {
+			cars[i] = cart.get(i);
+			System.out.println(cars[i].getRating());
+		}
+		System.out.println("cast du panier "+cars.length);
+		boolean test = garage.buy(account_id, cars, amountToPay);
+		if (test) {
+			System.out.println("buy fait");
 			cleanCart();
 			return true;
 		}

@@ -26,6 +26,7 @@ public class Garage {
 				car.setId(c.getId());
 				car.setAvailability(c.getAvailability());
 				car.setPrice(c.getPrice());
+				car.setRating(c.getRating());
 				this.addCar(car);
 			}
 		} catch (Exception e) {
@@ -78,17 +79,26 @@ public class Garage {
 			return -1;
 		}
 	}
-
-
-	public boolean buy(long id_account, Car[] cart) throws RemoteException {
-		//FAURE UN TABLEAU DE CARS
-		double amount = 0;
-		for (Car car : cart) {
-			amount += car.getPrice();
+	
+	public String getModel(Car car) {
+		Objects.requireNonNull(car);
+		Car c = cars.get(car.getId());
+		if (c != null) {
+			//return c.getModel();
+			return "";
+		} else {
+			System.out.println("\tcar not found");
+			return null;
 		}
+	}
+
+
+	public boolean buy(long id_account, Car[] cart, double amount) throws RemoteException {
+		System.out.println(amount);
 		if(bank.pay(id_account, amount)){
-			for (Car car : cart) {
-				this.cars.remove(car.getId());
+			System.out.println("paiment good");
+			for (int i = 0; i < cart.length; i++) {
+				this.cars.remove(cart[i].getId());
 			}
 			return true;
 		}

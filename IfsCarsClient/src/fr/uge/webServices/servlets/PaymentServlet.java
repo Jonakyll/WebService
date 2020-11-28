@@ -2,6 +2,7 @@ package fr.uge.webServices.servlets;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.uge.webServices.commons.Client;
+import fr.uge.webServices.project.Car;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -62,10 +64,19 @@ public class PaymentServlet extends HttpServlet {
 			request.getSession().setAttribute("client", client);
 		}
 		else if(request.getParameter("makeADeposit")!=null) {
-			System.out.println("ON FAIT UN DEPOT");
 			Client client = (Client) request.getSession().getAttribute("client");
 			double amount = Double.valueOf(request.getParameter("deposit"));
 			client.depositOf(amount);
+			request.getSession().setAttribute("client", client);
+		}else if(request.getParameter("BUY")!=null) {
+			Client client = (Client) request.getSession().getAttribute("client");
+			List<Car> cars = client.getCart();
+			if (client.buy()) {
+				request.getSession().setAttribute("achat", "fait");
+				request.getSession().setAttribute("achats", cars);
+			}else {
+				request.getSession().setAttribute("achat", "erreur");
+			}
 			request.getSession().setAttribute("client", client);
 		}
 		doGet(request, response);
