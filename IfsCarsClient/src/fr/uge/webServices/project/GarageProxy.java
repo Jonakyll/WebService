@@ -44,22 +44,16 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage;
   }
   
-  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
+  public long createBankAccount(java.lang.String currency) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.addAccount(id, currency, amount);
+    return garage.createBankAccount(currency);
   }
   
-  public boolean checkAccount(long id) throws java.rmi.RemoteException{
+  public int bankSize() throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.checkAccount(id);
-  }
-  
-  public double getAmountAccount(long id) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.getAmountAccount(id);
+    return garage.bankSize();
   }
   
   public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -68,22 +62,34 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage.getAvailability(car);
   }
   
-  public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getPrice(car);
+    return garage.getCars();
   }
   
-  public void displayBank() throws java.rmi.RemoteException{
+  public double getAmountAccount(long id) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    garage.displayBank();
+    return garage.getAmountAccount(id);
   }
   
-  public void buy() throws java.rmi.RemoteException{
+  public boolean checkAccount(long id) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    garage.buy();
+    return garage.checkAccount(id);
+  }
+  
+  public java.lang.String getCurrencyAccount(long id) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getCurrencyAccount(id);
+  }
+  
+  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.addAccount(id, currency, amount);
   }
   
   public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -92,16 +98,46 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     garage.addCar(car);
   }
   
-  public void addToCart() throws java.rmi.RemoteException{
+  public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    garage.addToCart();
+    return garage.getPrice(car);
   }
   
-  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
+  public float getRating(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getCars();
+    return garage.getRating(car);
+  }
+  
+  public void displayBank() throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    garage.displayBank();
+  }
+  
+  public void depositOf(long account_id, double amount) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    garage.depositOf(account_id, amount);
+  }
+  
+  public java.lang.String getModel(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getModel(car);
+  }
+  
+  public double getAmountAccountEUR(long id) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getAmountAccountEUR(id);
+  }
+  
+  public boolean buy(long id_account, fr.uge.webServices.project.Car[] cart, double amount) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.buy(id_account, cart, amount);
   }
   
   
