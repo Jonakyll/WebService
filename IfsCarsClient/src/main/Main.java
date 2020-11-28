@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
+import fr.uge.webServices.commons.Client;
 import fr.uge.webServices.project.Car;
 import fr.uge.webServices.project.Garage;
 import fr.uge.webServices.project.GarageServiceLocator;
@@ -11,36 +12,36 @@ import fr.uge.webServices.project.GarageServiceLocator;
 public class Main {
 
 	public static void main(String[] args) throws ServiceException, RemoteException {
-//		IGarage iGarage = (IGarage) Naming.lookup("rmi://localhost:1099/garage");
+		Client client = new Client();
 		Garage garage = new GarageServiceLocator().getGarage();
-		//System.out.println(garage.displayBankString());
+		// System.out.println(garage.displayBankString());
 
-//		for (ICar c : iGarage.getCars()) {
-//
-//			Car car = new Car();
-//			car.setId(c.getId());
-//			car.setAvailability(c.getAvailability());
-//			car.setPrice(c.getPrice());
-//			garage.addCar(car);
-//			
-//		}
-
-//		garage.getPrice(car);
-//		garage.getAvailability(car);
-//		garage.addToCart();
-//		garage.buy();
-		Car[] cars = garage.getCars();
+		System.out.println("==== SHOW CARS TO BUY =====");
+		Car[] cars = client.getCars();
 		for (int i = 0; i < cars.length; ++i) {
 			System.out.println("id\t\t" + cars[i].getId());
 			System.out.println("availability\t" + cars[i].isAvailability());
 			System.out.println("price\t\t" + cars[i].getPrice() + "\n");
 		}
 
-		// pour checker que les appels aux methodes rmi fonctionnent bien
+		System.out.println("\n===== SHOW CLIENT CART =====");
+		System.out.println("cart:");
+		for (Car car : client.getCart()) {
+			System.out.println("\tid: " + car.getId());
+		}
+		System.out.println("amount to pay:\t" + client.getAmountToPay());
 
-		// =========================================================
+		System.out.println("\n===== THE CLIENT ADDS CARS TO HIS CART=====");
+		client.addToCart(0);
+		client.addToCart(1);
 
-//		garage.setCarsToBuy(iGarage.getCarsToBuy());
-
+		System.out.println("===== SHOW CLIENT CART =====");
+		System.out.println("cart:");
+		for (Car car : client.getCart()) {
+			System.out.println("\tid: " + car.getId());
+		}
+		System.out.println("amount to pay:\t" + client.getAmountToPay());
+		
+		garage.displayBank();
 	}
 }
