@@ -33,12 +33,18 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 				car.setAvailability(false);
 				car.setNextTenantId(null);
 
+				ICustomer customer = customers.get(customerId);
+				customer.notify("You just rented a car");
+
 				return car;
 			} else {
 
 //					put the customer into the waiting list
 				if (!car.getTenants().contains(customerId)) {
 					car.addTenant(customerId);
+
+					ICustomer customer = customers.get(customerId);
+					customer.notify("The car is currently rented, you are now on the waiting list");
 				}
 				return null;
 			}
@@ -56,7 +62,9 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 			car.removeTenant();
 
 			// ask to the client to rate the car
-			// ask to the next client if he wants to rent?
+			// ask to the next client if he wants to rent
+			ICustomer customer = customers.get(customerId);
+			customer.notify("Thank you for renting our car!\nRate it?");
 
 			car.setAvailability(true);
 		}
@@ -84,6 +92,9 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 		ICar car = cars.get(carId);
 		if (car != null) {
 			car.setRating(rating);
+
+			ICustomer customer = customers.get(customerId);
+			customer.notify("Thank you for rating our car!");
 		}
 	}
 
@@ -100,9 +111,15 @@ public class Garage extends UnicastRemoteObject implements IGarage {
 	}
 
 	@Override
-	public void addCustomer(ICustomer customer) throws RemoteException {
+	public boolean addCustomer(ICustomer customer) throws RemoteException {
 		Objects.requireNonNull(customer);
+		if (customers.containsKey(customer.getId())) {
+			customer.notify("Access denied,\nanother employee is currently logged with this id");
+			return false;
+		}
 		customers.put(customer.getId(), customer);
+		customer.notify("Logged!");
+		return true;
 	}
 
 }

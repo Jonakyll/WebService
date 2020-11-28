@@ -23,13 +23,16 @@ public class Client {
 		Customer customer = new Customer();
 
 		customer.setId(Long.parseLong(args[0]));
-		garage.addCustomer(customer);
+		if (garage.addCustomer(customer)) {
 
-		Scanner scan = new Scanner(System.in);
-		while (scan.hasNextLine()) {
-			String request = scan.nextLine();
-			
-			RequestsParser.parseRequest(garage, customer, request);
+			try (Scanner scan = new Scanner(System.in)) {
+
+				while (scan.hasNextLine()) {
+					String request = scan.nextLine();
+
+					RequestsParser.parseRequest(garage, customer, request);
+				}
+			}
 		}
 	}
 
