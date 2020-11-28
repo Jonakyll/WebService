@@ -18,5 +18,5 @@ public interface IGarage extends Remote {
 
 	List<ICar> getCarsToBuy() throws RemoteException;
 	
-	void addCustomer(ICustomer customer) throws RemoteException;
+	boolean addCustomer(ICustomer customer) throws RemoteException;
 }
