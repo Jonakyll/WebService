@@ -28,25 +28,9 @@ public class Client {
 	
 	
 	public Car[] getCars() throws RemoteException {
-//		List<Car> cars = Arrays.asList(garage.getCars());
-//		List<Car> res = new ArrayList<Car>();
-//		for (Car car : cars) {
-//			if (!containsVehicle(car.getId())) {
-//				res.add(car);
-//			}
-//		}
-//		return res.toArray(new Car[0]);
 		return garage.getCars();
 	}
 	
-	private boolean containsVehicle(long id) {
-		for (Car car : cart) {
-			if (car.getId().equals(id)) {
-				return true;
-			}
-		}
-		return false;
-	}
 	
 	public void cleanCart() {
 		amountToPay = 0;
@@ -126,11 +110,9 @@ public class Client {
 	}
 	
 	public boolean buy() throws RemoteException {
-		System.out.println("on rentre dans buy");
 		Car[] cars = new Car[cart.size()];
 		for (int i=0; i<cart.size();i++) {
 			cars[i] = cart.get(i);
-			System.out.println(cars[i].getRating());
 		}
 		boolean test = garage.buy(account_id, cars, amountToPay);
 		if (test) {

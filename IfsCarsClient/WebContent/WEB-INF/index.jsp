@@ -23,6 +23,7 @@
 	for (Car car : cart) {
 		out.println("<p>");
 		out.println("id\t\t" + car.getId());
+		out.println("Modèle\t" + car.getModel());
 		out.println("Rating\t" + car.getRating());
 		out.println("price\t\t" + car.getPrice() + "\n");
 		out.println("</p>");
@@ -37,6 +38,7 @@
 	for(int i=0;i<cars.length;i++){
 		out.println("<p>");
 		out.println("id\t\t" + cars[i].getId());
+		out.println("Modèle\t" + cars[i].getModel());
 		out.println("Rating\t" + cars[i].getRating());
 		out.println("price\t\t" + cars[i].getPrice() + "\n");
 		out.println("<form method=\"post\" action=\"\"> <input type=\"submit\" value=\"Ajouter au panier\" name=\""+cars[i].getId()+"\"/></form></p>");

@@ -25,6 +25,7 @@
 		for (Car car : cart) {
 			out.println("<p>");
 			out.println("id\t\t" + car.getId());
+			out.println("Modèle\t" + car.getModel());
 			out.println("Rating\t" + car.getRating());
 			out.println("price\t\t" + car.getPrice() + "\n");
 			out.println("</p>");
@@ -56,7 +57,8 @@
 		for(int i=0;i<cars.size();i++){
 			out.println("<p>");
 			out.println("id\t\t" + cars.get(i).getId());
-			out.println("availability\t" + cars.get(i).isAvailability());
+			out.println("Modèle\t" + cars.get(i).getModel());
+
 			out.println("<p>");
 		}
 	}else if(request.getSession().getAttribute("achat") != null && request.getSession().getAttribute("achat").equals("erreur")) {
