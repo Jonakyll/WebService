@@ -18,7 +18,7 @@ public class Main {
 		garage.displayBank();
 
 		System.out.println("===== CLIENT CREATES A BANK ACCOUNT =====");
-		client.createAccount("USD");
+		client.createAccount("JPY");
 		client.depositOf(1_000_000);
 		System.out.println("id: " + client.getAccount_id());
 		System.out.println("money: " + client.getAmountAccount());
@@ -29,7 +29,7 @@ public class Main {
 		Car[] cars = client.getCars();
 		for (int i = 0; i < cars.length; ++i) {
 			System.out.println("id\t\t" + cars[i].getId());
-			System.out.println("id\t\t" + cars[i].getModel());
+			System.out.println("model\t\t" + cars[i].getModel());
 			System.out.println("availability\t" + cars[i].isAvailability());
 			System.out.println("price\t\t" + cars[i].getPrice() + "\n");
 		}
@@ -58,6 +58,10 @@ public class Main {
 		} else {
 			System.out.println("===== THE CLIENT COULDN'T PAY =====");
 		}
+		
+		System.out.println("\n===== CLIENT ACCOUNT =====");
+		System.out.println("id: " + client.getAccount_id());
+		System.out.println("money: " + client.getAmountAccount());
 
 		garage.displayBank();
 
