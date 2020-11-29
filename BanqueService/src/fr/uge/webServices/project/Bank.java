@@ -61,10 +61,10 @@ public class Bank {
 
 	private double isAbleToPay(Long id, double amountEUR) throws RemoteException {
 		Account account = accountMap.get(id);
-		double accountCurrentCurrency = (double) soapServer.convert("", "EUR",  account.getCurrency(), account.getValue(), 
+		double amountToPay = (double) soapServer.convert("", "EUR",  account.getCurrency(), amountEUR, 
 				false, ".", CurncsrvReturnRate.curncsrvReturnRateNumber, "", "");
-		if (account.getValue() >=accountCurrentCurrency) {
-			return accountCurrentCurrency;
+		if (account.getValue() >=amountToPay) {
+			return amountToPay;
 		}
 		return -1;
 	}

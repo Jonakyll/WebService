@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -31,29 +31,29 @@
  <ns1:service name="Bank" provider="java:RPC" style="wrapped" use="literal">
   <ns2:operation name="getSize" qname="ns1:getSize" returnQName="ns1:getSizeReturn" returnType="xsd:int" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
   <ns1:operation name="display" qname="ns2:display" soapAction="" xmlns:ns2="http://project.webServices.uge.fr"/>
-  <ns1:operation name="addAccount" qname="ns3:addAccount" returnQName="ns3:addAccountReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="getAmountAccountEUR" qname="ns3:getAmountAccountEUR" returnQName="ns3:getAmountAccountEURReturn" returnType="xsd:double" soapAction="" xmlns:ns3="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns3:id" type="xsd:long"/>
-   <ns1:parameter qname="ns3:currency" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="getAmountAccount" qname="ns4:getAmountAccount" returnQName="ns4:getAmountAccountReturn" returnType="xsd:double" soapAction="" xmlns:ns4="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addAccount" qname="ns4:addAccount" returnQName="ns4:addAccountReturn" returnType="xsd:int" soapAction="" xmlns:ns4="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns4:id" type="xsd:long"/>
+   <ns1:parameter qname="ns4:currency" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="checkAccount" qname="ns5:checkAccount" returnQName="ns5:checkAccountReturn" returnType="xsd:boolean" soapAction="" xmlns:ns5="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:id" type="xsd:long"/>
+  <ns1:operation name="depositOf" qname="ns5:depositOf" soapAction="" xmlns:ns5="http://project.webServices.uge.fr">
+   <ns1:parameter qname="ns5:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="getCurrencyAccount" qname="ns6:getCurrencyAccount" returnQName="ns6:getCurrencyAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="pay" qname="ns6:pay" returnQName="ns6:payReturn" returnType="xsd:boolean" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns6:id" type="xsd:long"/>
+   <ns1:parameter qname="ns6:amountEUR" type="xsd:double"/>
   </ns1:operation>
-  <ns1:operation name="depositOf" qname="ns7:depositOf" soapAction="" xmlns:ns7="http://project.webServices.uge.fr">
-   <ns1:parameter qname="ns7:id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns7:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getAmountAccount" qname="ns7:getAmountAccount" returnQName="ns7:getAmountAccountReturn" returnType="xsd:double" soapAction="" xmlns:ns7="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="getAmountAccountEUR" qname="ns8:getAmountAccountEUR" returnQName="ns8:getAmountAccountEURReturn" returnType="xsd:double" soapAction="" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="checkAccount" qname="ns8:checkAccount" returnQName="ns8:checkAccountReturn" returnType="xsd:boolean" soapAction="" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns8:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="pay" qname="ns9:pay" returnQName="ns9:payReturn" returnType="xsd:boolean" soapAction="" xmlns:ns9="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="getCurrencyAccount" qname="ns9:getCurrencyAccount" returnQName="ns9:getCurrencyAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns9:id" type="xsd:long"/>
-   <ns1:parameter qname="ns9:amountEUR" type="xsd:double"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getAmountAccount getCurrencyAccount getSize checkAccount display getAmountAccountEUR pay addAccount depositOf"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>

@@ -44,16 +44,40 @@ public class BankProxy implements fr.uge.webServices.project.Bank {
     return bank;
   }
   
+  public int getSize() throws java.rmi.RemoteException{
+    if (bank == null)
+      _initBankProxy();
+    return bank.getSize();
+  }
+  
   public void display() throws java.rmi.RemoteException{
     if (bank == null)
       _initBankProxy();
     bank.display();
   }
   
+  public double getAmountAccountEUR(long id) throws java.rmi.RemoteException{
+    if (bank == null)
+      _initBankProxy();
+    return bank.getAmountAccountEUR(id);
+  }
+  
   public int addAccount(long id, java.lang.String currency) throws java.rmi.RemoteException{
     if (bank == null)
       _initBankProxy();
     return bank.addAccount(id, currency);
+  }
+  
+  public void depositOf(long id, double amount) throws java.rmi.RemoteException{
+    if (bank == null)
+      _initBankProxy();
+    bank.depositOf(id, amount);
+  }
+  
+  public boolean pay(long id, double amountEUR) throws java.rmi.RemoteException{
+    if (bank == null)
+      _initBankProxy();
+    return bank.pay(id, amountEUR);
   }
   
   public double getAmountAccount(long id) throws java.rmi.RemoteException{
@@ -72,30 +96,6 @@ public class BankProxy implements fr.uge.webServices.project.Bank {
     if (bank == null)
       _initBankProxy();
     return bank.getCurrencyAccount(id);
-  }
-  
-  public void depositOf(long id, double amount) throws java.rmi.RemoteException{
-    if (bank == null)
-      _initBankProxy();
-    bank.depositOf(id, amount);
-  }
-  
-  public double getAmountAccountEUR(long id) throws java.rmi.RemoteException{
-    if (bank == null)
-      _initBankProxy();
-    return bank.getAmountAccountEUR(id);
-  }
-  
-  public boolean pay(long id, double amountEUR) throws java.rmi.RemoteException{
-    if (bank == null)
-      _initBankProxy();
-    return bank.pay(id, amountEUR);
-  }
-  
-  public int getSize() throws java.rmi.RemoteException{
-    if (bank == null)
-      _initBankProxy();
-    return bank.getSize();
   }
   
   

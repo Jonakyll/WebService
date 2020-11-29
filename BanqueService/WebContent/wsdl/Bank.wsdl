@@ -20,6 +20,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="displayResponse">
     <complexType/>
    </element>
+   <element name="getAmountAccountEUR">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAmountAccountEURResponse">
+    <complexType>
+     <sequence>
+      <element name="getAmountAccountEURReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="addAccount">
     <complexType>
      <sequence>
@@ -32,6 +46,32 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="addAccountReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="depositOf">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amount" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="depositOfResponse">
+    <complexType/>
+   </element>
+   <element name="pay">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+      <element name="amountEUR" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payResponse">
+    <complexType>
+     <sequence>
+      <element name="payReturn" type="xsd:boolean"/>
      </sequence>
     </complexType>
    </element>
@@ -77,46 +117,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="depositOf">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="amount" type="xsd:double"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="depositOfResponse">
-    <complexType/>
-   </element>
-   <element name="getAmountAccountEUR">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAmountAccountEURResponse">
-    <complexType>
-     <sequence>
-      <element name="getAmountAccountEURReturn" type="xsd:double"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="pay">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:long"/>
-      <element name="amountEUR" type="xsd:double"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="payResponse">
-    <complexType>
-     <sequence>
-      <element name="payReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
   </schema>
  </wsdl:types>
 
@@ -131,6 +131,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="depositOfRequest">
 
       <wsdl:part element="impl:depositOf" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAmountAccountEURResponse">
+
+      <wsdl:part element="impl:getAmountAccountEURResponse" name="parameters">
 
       </wsdl:part>
 
@@ -152,9 +160,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getAmountAccountEURResponse">
+   <wsdl:message name="depositOfResponse">
 
-      <wsdl:part element="impl:getAmountAccountEURResponse" name="parameters">
+      <wsdl:part element="impl:depositOfResponse" name="parameters">
 
       </wsdl:part>
 
@@ -163,14 +171,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="checkAccountResponse">
 
       <wsdl:part element="impl:checkAccountResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="depositOfResponse">
-
-      <wsdl:part element="impl:depositOfResponse" name="parameters">
 
       </wsdl:part>
 
@@ -290,6 +290,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getAmountAccountEUR">
+
+         <wsdl:input message="impl:getAmountAccountEURRequest" name="getAmountAccountEURRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAmountAccountEURResponse" name="getAmountAccountEURResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="addAccount">
 
          <wsdl:input message="impl:addAccountRequest" name="addAccountRequest">
@@ -297,6 +309,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:addAccountResponse" name="addAccountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pay">
+
+         <wsdl:input message="impl:payRequest" name="payRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:payResponse" name="payResponse">
 
        </wsdl:output>
 
@@ -333,42 +369,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getCurrencyAccountResponse" name="getCurrencyAccountResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="depositOf">
-
-         <wsdl:input message="impl:depositOfRequest" name="depositOfRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:depositOfResponse" name="depositOfResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAmountAccountEUR">
-
-         <wsdl:input message="impl:getAmountAccountEURRequest" name="getAmountAccountEURRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getAmountAccountEURResponse" name="getAmountAccountEURResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="pay">
-
-         <wsdl:input message="impl:payRequest" name="payRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:payResponse" name="payResponse">
 
        </wsdl:output>
 
@@ -416,6 +416,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getAmountAccountEUR">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAmountAccountEURRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAmountAccountEURResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="addAccount">
 
          <wsdlsoap:operation soapAction=""/>
@@ -427,6 +445,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="addAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="depositOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="depositOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="depositOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pay">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="payRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="payResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -481,60 +535,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getCurrencyAccountResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="depositOf">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="depositOfRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="depositOfResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getAmountAccountEUR">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getAmountAccountEURRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getAmountAccountEURResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="pay">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="payRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="payResponse">
 
             <wsdlsoap:body use="literal"/>
 
