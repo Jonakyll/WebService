@@ -14,8 +14,9 @@ public class Main {
 	public static void main(String[] args) throws ServiceException, RemoteException {
 		Client client = new Client();
 		Garage garage = new GarageServiceLocator().getGarage();
-		// System.out.println(garage.displayBankString());
 
+		client.checkAccount(3L);
+		
 		System.out.println("==== SHOW CARS TO BUY =====");
 		Car[] cars = client.getCars();
 		for (int i = 0; i < cars.length; ++i) {
@@ -34,14 +35,23 @@ public class Main {
 		System.out.println("\n===== THE CLIENT ADDS CARS TO HIS CART=====");
 		client.addToCart(0);
 		client.addToCart(1);
+		client.addToCart(2);
+		client.addToCart(3);
 
 		System.out.println("===== SHOW CLIENT CART =====");
 		System.out.println("cart:");
 		for (Car car : client.getCart()) {
 			System.out.println("\tid: " + car.getId());
 		}
-		System.out.println("amount to pay:\t" + client.getAmountToPay());
+		System.out.println("amount to pay (in EUR):\t" + client.getAmountToPay());
 		
-		garage.displayBank();
+		System.out.println("===== THE CLIENT PAYS =====");
+		if (client.buy()) {
+			System.out.println("===== CARS PAID =====");
+		} else {
+			System.out.println("===== THE CLIENT COULDN'T PAY =====");			
+		}
+		
+		
 	}
 }

@@ -44,16 +44,16 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage;
   }
   
-  public long createBankAccount(java.lang.String currency) throws java.rmi.RemoteException{
+  public java.lang.String getModel(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.createBankAccount(currency);
+    return garage.getModel(car);
   }
   
-  public int bankSize() throws java.rmi.RemoteException{
+  public double getAmountAccountEUR(long id) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.bankSize();
+    return garage.getAmountAccountEUR(id);
   }
   
   public boolean getAvailability(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -62,40 +62,10 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     return garage.getAvailability(car);
   }
   
-  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
+  public void depositOf(long account_id, double amount) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getCars();
-  }
-  
-  public double getAmountAccount(long id) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.getAmountAccount(id);
-  }
-  
-  public boolean checkAccount(long id) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.checkAccount(id);
-  }
-  
-  public java.lang.String getCurrencyAccount(long id) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.getCurrencyAccount(id);
-  }
-  
-  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    return garage.addAccount(id, currency, amount);
-  }
-  
-  public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
-    if (garage == null)
-      _initGarageProxy();
-    garage.addCar(car);
+    garage.depositOf(account_id, amount);
   }
   
   public long getPrice(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
@@ -116,28 +86,58 @@ public class GarageProxy implements fr.uge.webServices.project.Garage {
     garage.displayBank();
   }
   
-  public void depositOf(long account_id, double amount) throws java.rmi.RemoteException{
+  public fr.uge.webServices.project.Car[] getCars() throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    garage.depositOf(account_id, amount);
+    return garage.getCars();
   }
   
-  public java.lang.String getModel(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+  public int addAccount(long id, java.lang.String currency, int amount) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getModel(car);
+    return garage.addAccount(id, currency, amount);
   }
   
-  public double getAmountAccountEUR(long id) throws java.rmi.RemoteException{
+  public boolean checkAccount(long id) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
-    return garage.getAmountAccountEUR(id);
+    return garage.checkAccount(id);
+  }
+  
+  public void addCar(fr.uge.webServices.project.Car car) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    garage.addCar(car);
   }
   
   public boolean buy(long id_account, fr.uge.webServices.project.Car[] cart, double amount) throws java.rmi.RemoteException{
     if (garage == null)
       _initGarageProxy();
     return garage.buy(id_account, cart, amount);
+  }
+  
+  public java.lang.String getCurrencyAccount(long id) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getCurrencyAccount(id);
+  }
+  
+  public long createBankAccount(java.lang.String currency) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.createBankAccount(currency);
+  }
+  
+  public double getAmountAccount(long id) throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.getAmountAccount(id);
+  }
+  
+  public int bankSize() throws java.rmi.RemoteException{
+    if (garage == null)
+      _initGarageProxy();
+    return garage.bankSize();
   }
   
   

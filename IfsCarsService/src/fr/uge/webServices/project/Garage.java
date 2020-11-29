@@ -27,6 +27,7 @@ public class Garage {
 				car.setAvailability(c.getAvailability());
 				car.setPrice(c.getPrice());
 				car.setRating(c.getRating());
+				car.setModel(c.getModel());
 				this.addCar(car);
 			}
 		} catch (Exception e) {

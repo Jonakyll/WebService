@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -29,54 +29,54 @@
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
  <ns1:service name="Garage" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="createBankAccount" qname="ns1:createBankAccount" returnQName="ns1:createBankAccountReturn" returnType="xsd:long" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:currency" type="xsd:string"/>
+  <ns2:operation name="getModel" qname="ns1:getModel" returnQName="ns1:getModelReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:car" type="ns1:Car"/>
   </ns2:operation>
-  <ns1:operation name="bankSize" qname="ns2:bankSize" returnQName="ns2:bankSizeReturn" returnType="xsd:int" soapAction="" xmlns:ns2="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getAmountAccountEUR" qname="ns2:getAmountAccountEUR" returnQName="ns2:getAmountAccountEURReturn" returnType="xsd:double" soapAction="" xmlns:ns2="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:id" type="xsd:long"/>
+  </ns1:operation>
   <ns1:operation name="getAvailability" qname="ns3:getAvailability" returnQName="ns3:getAvailabilityReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns3:car" type="ns3:Car"/>
   </ns1:operation>
-  <ns1:operation name="getCars" qname="ns4:getCars" returnQName="ns4:getCarsReturn" returnType="ns4:Car" soapAction="" xmlns:ns4="http://project.webServices.uge.fr"/>
-  <ns1:operation name="getAmountAccount" qname="ns5:getAmountAccount" returnQName="ns5:getAmountAccountReturn" returnType="xsd:double" soapAction="" xmlns:ns5="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:id" type="xsd:long"/>
+  <ns1:operation name="depositOf" qname="ns4:depositOf" soapAction="" xmlns:ns4="http://project.webServices.uge.fr">
+   <ns1:parameter qname="ns4:account_id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:operation name="checkAccount" qname="ns6:checkAccount" returnQName="ns6:checkAccountReturn" returnType="xsd:boolean" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:id" type="xsd:long"/>
+  <ns1:operation name="getPrice" qname="ns5:getPrice" returnQName="ns5:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns5="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:car" type="ns5:Car"/>
   </ns1:operation>
-  <ns1:operation name="buy" qname="ns7:buy" returnQName="ns7:buyReturn" returnType="xsd:boolean" soapAction="" xmlns:ns7="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns7:id_account" type="xsd:long"/>
-   <ns1:parameter qname="ns7:cart" type="ns7:Car"/>
-   <ns1:parameter qname="ns7:amount" type="xsd:double"/>
+  <ns1:operation name="getRating" qname="ns6:getRating" returnQName="ns6:getRatingReturn" returnType="xsd:float" soapAction="" xmlns:ns6="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:car" type="ns6:Car"/>
   </ns1:operation>
-  <ns1:operation name="getCurrencyAccount" qname="ns8:getCurrencyAccount" returnQName="ns8:getCurrencyAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns8:id" type="xsd:long"/>
-  </ns1:operation>
+  <ns1:operation name="displayBank" qname="ns7:displayBank" soapAction="" xmlns:ns7="http://project.webServices.uge.fr"/>
+  <ns1:operation name="getCars" qname="ns8:getCars" returnQName="ns8:getCarsReturn" returnType="ns8:Car" soapAction="" xmlns:ns8="http://project.webServices.uge.fr"/>
   <ns1:operation name="addAccount" qname="ns9:addAccount" returnQName="ns9:addAccountReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns9:id" type="xsd:long"/>
    <ns1:parameter qname="ns9:currency" type="xsd:string"/>
    <ns1:parameter qname="ns9:amount" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="addCar" qname="ns10:addCar" soapAction="" xmlns:ns10="http://project.webServices.uge.fr">
-   <ns1:parameter qname="ns10:car" type="ns10:Car"/>
+  <ns1:operation name="checkAccount" qname="ns10:checkAccount" returnQName="ns10:checkAccountReturn" returnType="xsd:boolean" soapAction="" xmlns:ns10="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="getPrice" qname="ns11:getPrice" returnQName="ns11:getPriceReturn" returnType="xsd:long" soapAction="" xmlns:ns11="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addCar" qname="ns11:addCar" soapAction="" xmlns:ns11="http://project.webServices.uge.fr">
    <ns1:parameter qname="ns11:car" type="ns11:Car"/>
   </ns1:operation>
-  <ns1:operation name="getRating" qname="ns12:getRating" returnQName="ns12:getRatingReturn" returnType="xsd:float" soapAction="" xmlns:ns12="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns12:car" type="ns12:Car"/>
+  <ns1:operation name="buy" qname="ns12:buy" returnQName="ns12:buyReturn" returnType="xsd:boolean" soapAction="" xmlns:ns12="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:id_account" type="xsd:long"/>
+   <ns1:parameter qname="ns12:cart" type="ns12:Car"/>
+   <ns1:parameter qname="ns12:amount" type="xsd:double"/>
   </ns1:operation>
-  <ns1:operation name="displayBank" qname="ns13:displayBank" soapAction="" xmlns:ns13="http://project.webServices.uge.fr"/>
-  <ns1:operation name="depositOf" qname="ns14:depositOf" soapAction="" xmlns:ns14="http://project.webServices.uge.fr">
-   <ns1:parameter qname="ns14:account_id" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns14:amount" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getCurrencyAccount" qname="ns13:getCurrencyAccount" returnQName="ns13:getCurrencyAccountReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:operation name="getModel" qname="ns15:getModel" returnQName="ns15:getModelReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns15:car" type="ns15:Car"/>
+  <ns1:operation name="createBankAccount" qname="ns14:createBankAccount" returnQName="ns14:createBankAccountReturn" returnType="xsd:long" soapAction="" xmlns:ns14="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:currency" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="getAmountAccountEUR" qname="ns16:getAmountAccountEUR" returnQName="ns16:getAmountAccountEURReturn" returnType="xsd:double" soapAction="" xmlns:ns16="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns16:id" type="xsd:long"/>
+  <ns1:operation name="getAmountAccount" qname="ns15:getAmountAccount" returnQName="ns15:getAmountAccountReturn" returnType="xsd:double" soapAction="" xmlns:ns15="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:id" type="xsd:long"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getAmountAccount getCurrencyAccount getModel createBankAccount addCar buy getCars getPrice depositOf bankSize getAvailability checkAccount displayBank getAmountAccountEUR addAccount getRating"/>
+  <ns1:operation name="bankSize" qname="ns16:bankSize" returnQName="ns16:bankSizeReturn" returnType="xsd:int" soapAction="" xmlns:ns16="http://project.webServices.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="getCurrencyAccount getAmountAccount getModel createBankAccount addCar buy getCars depositOf getPrice bankSize getAvailability checkAccount getAmountAccountEUR displayBank addAccount getRating"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Garage"/>
   <ns1:parameter name="className" value="fr.uge.webServices.project.Garage"/>
