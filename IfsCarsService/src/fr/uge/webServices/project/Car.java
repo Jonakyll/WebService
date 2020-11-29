@@ -1,5 +1,6 @@
 package fr.uge.webServices.project;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Car {
 
 	private Long nextTenant;
 	private Long price;
+	private String model;
 
 	public Long getId() {
 		return id;
@@ -75,6 +77,14 @@ public class Car {
 
 	public void setNextTenantId(Long customerId) {
 		this.nextTenant = customerId;
+	}
+
+	public String getModel() throws RemoteException {
+		return model;
+	}
+
+	public void setModel(String model) throws RemoteException {
+		this.model = model;
 	}
 
 }

@@ -132,10 +132,8 @@ public class Client {
 			cars[i] = cart.get(i);
 			System.out.println(cars[i].getRating());
 		}
-		System.out.println("cast du panier "+cars.length);
 		boolean test = garage.buy(account_id, cars, amountToPay);
 		if (test) {
-			System.out.println("buy fait");
 			cleanCart();
 			return true;
 		}

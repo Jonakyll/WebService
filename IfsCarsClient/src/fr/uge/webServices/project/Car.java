@@ -12,6 +12,8 @@ public class Car  implements java.io.Serializable {
 
     private java.lang.Long id;
 
+    private java.lang.String model;
+
     private java.lang.Long nextTenantId;
 
     private java.lang.Long price;
@@ -26,12 +28,14 @@ public class Car  implements java.io.Serializable {
     public Car(
            boolean availability,
            java.lang.Long id,
+           java.lang.String model,
            java.lang.Long nextTenantId,
            java.lang.Long price,
            float rating,
            long[] tenants) {
            this.availability = availability;
            this.id = id;
+           this.model = model;
            this.nextTenantId = nextTenantId;
            this.price = price;
            this.rating = rating;
@@ -76,6 +80,26 @@ public class Car  implements java.io.Serializable {
      */
     public void setId(java.lang.Long id) {
         this.id = id;
+    }
+
+
+    /**
+     * Gets the model value for this Car.
+     * 
+     * @return model
+     */
+    public java.lang.String getModel() {
+        return model;
+    }
+
+
+    /**
+     * Sets the model value for this Car.
+     * 
+     * @param model
+     */
+    public void setModel(java.lang.String model) {
+        this.model = model;
     }
 
 
@@ -174,6 +198,9 @@ public class Car  implements java.io.Serializable {
             ((this.id==null && other.getId()==null) || 
              (this.id!=null &&
               this.id.equals(other.getId()))) &&
+            ((this.model==null && other.getModel()==null) || 
+             (this.model!=null &&
+              this.model.equals(other.getModel()))) &&
             ((this.nextTenantId==null && other.getNextTenantId()==null) || 
              (this.nextTenantId!=null &&
               this.nextTenantId.equals(other.getNextTenantId()))) &&
@@ -198,6 +225,9 @@ public class Car  implements java.io.Serializable {
         _hashCode += (isAvailability() ? Boolean.TRUE : Boolean.FALSE).hashCode();
         if (getId() != null) {
             _hashCode += getId().hashCode();
+        }
+        if (getModel() != null) {
+            _hashCode += getModel().hashCode();
         }
         if (getNextTenantId() != null) {
             _hashCode += getNextTenantId().hashCode();
@@ -237,6 +267,12 @@ public class Car  implements java.io.Serializable {
         elemField.setFieldName("id");
         elemField.setXmlName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("model");
+        elemField.setXmlName(new javax.xml.namespace.QName("http://project.webServices.uge.fr", "model"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
